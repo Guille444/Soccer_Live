@@ -15,8 +15,7 @@
 
 <body>
     <main>
-        <form class="row g-3" id="perfilForm">
-            <section class="vh-100 gradient-custom">
+        <form id="perfilForm">
                 <div class="container py-5 h-100">
                     <div class="row justify-content-center align-items-center h-100">
                         <div class="col-12 col-lg-9 col-xl-7">
@@ -55,23 +54,16 @@
                                         <button class="buttonG" type="submit">Guardar</button>
 
                                         <div class="text-center p-3">
-                                            <button type="button" class="btn btn-secondary" onclick="openPassword()">
+                                            <button type="button" class="buttonM" onclick="openPassword()">
                                                 <i class="bi bi-shield-lock"></i> Cambiar contraseña
                                             </button>
                                         </div>
-
-                                        <button type="reset" class="btn btn-secondary">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="../admin/inicio.html" id="inicio">INICIO</a>
-                                            </li>
-                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
         </form>
 
         <div class="modal fade" id="passwordModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -116,7 +108,7 @@
 
     <!-- Inclusión de la librería de mascaras. Para más información https://github.com/text-mask/text-mask -->
     <script type="text/javascript" src="../../resources/js/vanillaTextMask.js"></script>
-    </main>
+    
     <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
