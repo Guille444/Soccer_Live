@@ -1,5 +1,5 @@
 /*color a letra del menú de navegación*/
-#pedidos {
+#valoracion {
     color: #A8E910;
 }
 
@@ -18,15 +18,15 @@ section {
     overflow: hidden;
 }
 
-#rowsFound{
-    background-color: #0C3A6B;
-    color: white;
-}
-
 /*estilo y color a la letra*/
 #text {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: #FFFFFF;
+}
+
+#rowsFound{
+    background-color: #0C3A6B;
+    color: white;
 }
 
 main {
