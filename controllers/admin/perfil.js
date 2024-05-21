@@ -8,6 +8,7 @@ const PASSWORD_MODAL = new bootstrap.Modal('#passwordModal');
 // Constante para establecer el formulario de cambiar contraseña.
 const PASSWORD_FORM = document.getElementById('passwordForm');
 
+
 document.addEventListener('DOMContentLoaded', async () => {
     // Llamada a la función para mostrar el encabezado y pie del documento.
     loadTemplate();

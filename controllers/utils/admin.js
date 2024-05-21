@@ -80,6 +80,15 @@ const loadTemplate = async () => {
         } else {
             sweetAlert(3, DATA.error, false, 'index.html');
         }
+    } else {
+        console.log('de vuelta');
+        // Se comprueba si la página web es la principal, de lo contrario se direcciona a iniciar sesión.
+        if (location.pathname.endsWith('index.html')) {
+            // Se agrega el encabezado de la página web antes del contenido principal.
+
+        } else {
+            location.href = 'index.html';
+        }
     }
 }
 
@@ -146,6 +155,15 @@ const loadTemplate2 = async () => {
             `);
         } else {
             sweetAlert(3, DATA.error, false, 'index.html');
+        }
+    } else {
+        console.log('de vuelta');
+        // Se comprueba si la página web es la principal, de lo contrario se direcciona a iniciar sesión.
+        if (location.pathname.endsWith('index.html')) {
+            // Se agrega el encabezado de la página web antes del contenido principal.
+
+        } else {
+            location.href = 'index.html';
         }
     }
 }
@@ -214,6 +232,15 @@ const loadTemplate3 = async () => {
         } else {
             sweetAlert(3, DATA.error, false, 'index.html');
         }
+    } else {
+        console.log('de vuelta');
+        // Se comprueba si la página web es la principal, de lo contrario se direcciona a iniciar sesión.
+        if (location.pathname.endsWith('index.html')) {
+            // Se agrega el encabezado de la página web antes del contenido principal.
+
+        } else {
+            location.href = 'index.html';
+        }
     }
 }
 
@@ -280,6 +307,15 @@ const loadTemplate4 = async () => {
             `);
         } else {
             sweetAlert(3, DATA.error, false, 'index.html');
+        }
+    } else {
+        console.log('de vuelta');
+        // Se comprueba si la página web es la principal, de lo contrario se direcciona a iniciar sesión.
+        if (location.pathname.endsWith('index.html')) {
+            // Se agrega el encabezado de la página web antes del contenido principal.
+
+        } else {
+            location.href = 'index.html';
         }
     }
 }
@@ -348,6 +384,15 @@ const loadTemplate5 = async () => {
         } else {
             sweetAlert(3, DATA.error, false, 'index.html');
         }
+    } else {
+        console.log('de vuelta');
+        // Se comprueba si la página web es la principal, de lo contrario se direcciona a iniciar sesión.
+        if (location.pathname.endsWith('index.html')) {
+            // Se agrega el encabezado de la página web antes del contenido principal.
+
+        } else {
+            location.href = 'index.html';
+        }
     }
 }
 
@@ -414,6 +459,15 @@ const loadTemplate6 = async () => {
             `);
         } else {
             sweetAlert(3, DATA.error, false, 'index.html');
+        }
+    } else {
+        console.log('de vuelta');
+        // Se comprueba si la página web es la principal, de lo contrario se direcciona a iniciar sesión.
+        if (location.pathname.endsWith('index.html')) {
+            // Se agrega el encabezado de la página web antes del contenido principal.
+
+        } else {
+            location.href = 'index.html';
         }
     }
 }
@@ -482,6 +536,15 @@ const loadTemplate7 = async () => {
         } else {
             sweetAlert(3, DATA.error, false, 'index.html');
         }
+    } else {
+        console.log('de vuelta');
+        // Se comprueba si la página web es la principal, de lo contrario se direcciona a iniciar sesión.
+        if (location.pathname.endsWith('index.html')) {
+            // Se agrega el encabezado de la página web antes del contenido principal.
+
+        } else {
+            location.href = 'index.html';
+        }
     }
 }
 
@@ -548,6 +611,15 @@ const loadTemplate8 = async () => {
             `);
         } else {
             sweetAlert(3, DATA.error, false, 'index.html');
+        }
+    } else {
+        console.log('de vuelta');
+        // Se comprueba si la página web es la principal, de lo contrario se direcciona a iniciar sesión.
+        if (location.pathname.endsWith('index.html')) {
+            // Se agrega el encabezado de la página web antes del contenido principal.
+
+        } else {
+            location.href = 'index.html';
         }
     }
 }
