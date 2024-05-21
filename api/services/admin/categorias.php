@@ -14,6 +14,7 @@ if (isset($_GET['action'])) {
     if (isset($_SESSION['idEmpleado'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
+            //caso para hacer una busqueda 
             case 'searchRows':
                 if (!Validator::validateSearch($_POST['search'])) {
                     $result['error'] = Validator::getSearchError();
@@ -24,6 +25,7 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'No hay coincidencias';
                 }
                 break;
+                //caso para crear una nueva categorìa
             case 'createRow':
                 $_POST = Validator::validateForm($_POST);
                 if (
@@ -41,6 +43,7 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al crear la categoría';
                 }
                 break;
+                //caso de una alerta para ver si hay una categoria
             case 'readAll':
                 if ($result['dataset'] = $categoria->readAll()) {
                     $result['status'] = 1;
@@ -49,6 +52,7 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'No existen categorías registradas';
                 }
                 break;
+                //caso leer si hay una categoria
             case 'readOne':
                 if (!$categoria->setId($_POST['idCategoria'])) {
                     $result['error'] = $categoria->getDataError();
@@ -58,6 +62,7 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Categoría inexistente';
                 }
                 break;
+                //caso para actualizar una categoria
             case 'updateRow':
                 $_POST = Validator::validateForm($_POST);
                 if (
@@ -77,6 +82,7 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al modificar la categoría';
                 }
                 break;
+                //caso para eliminar una categoria
             case 'deleteRow':
                 if (
                     !$categoria->setId($_POST['idCategoria']) or

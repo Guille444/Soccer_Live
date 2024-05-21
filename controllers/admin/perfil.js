@@ -12,7 +12,7 @@ const PASSWORD_FORM = document.getElementById('passwordForm');
 vanillaTextMask.maskInput({
     inputElement: document.getElementById('telefonoEmpleado'),
     mask: [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
-});
+}); 
 
 document.addEventListener('DOMContentLoaded', async () => {
     // Llamada a la función para mostrar el encabezado y pie del documento.
