@@ -19,7 +19,7 @@ class ValoracionHandler
     public function changeStatus()
     {
         $sql = 'UPDATE comentarios
-                SET estado_valoracion = ?
+                SET estado_comentario = ?
                 WHERE id_comentario = ?';
         $params = array($this->estado, $this->id);
         return Database::executeRow($sql, $params);
@@ -42,7 +42,7 @@ class ValoracionHandler
 
     public function readAll()
     {
-        $sql = 'SELECT id_comentario, descripcion_comentario, fecha_comentario, estado_comentario
+        $sql = 'SELECT id_comentario, descripcion_comentario, fecha_comentario, estado_comentario, nombre_cliente, nombre_producto
                 FROM comentarios
                 INNER JOIN clientes USING(id_cliente)
                 INNER JOIN productos USING(id_producto)
