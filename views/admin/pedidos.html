@@ -54,17 +54,63 @@
                             </tr>
                             <tr>
                                 <th class="text-center" id="tabla">CLIENTE</th>
-                                <th class="text-center" id="tabla">DIRECCIÓN</th>
-                                <th class="text-center" id="tabla">ESTADO</th>
+                                <th class="text-center" id="tabla">DIRECCIÓN DEL PEDIDO</th>
                                 <th class="text-center" id="tabla">FECHA DEL PEDIDO</th>
+                                <th class="text-center" id="tabla">ESTADO</th>
                                 <th class="text-center" id="tabla">ACCIONES</th>
                             </tr>
                         </thead>
                         <!-- Cuerpo de la tabla para mostrar un registro por fila -->
-                        <tbody id="tableBody">
+                        <tbody id="tableBody" class="text-center">
 
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <!-- Componente Modal para guardar un registro -->
+            <div class="modal fade" id="saveModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="modalTitle"></h1>
+                        </div>
+                        <form id="saveForm">
+                            <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                            <input type="hidden" id="idPedido" name="idPedido">
+                            <div class="modal-body row g-3" id="modal-fondo">
+                                <div class="col-sm-12 col-md-6">
+                                    <label for="nombreCliente" class="form-label">Cliente</label>
+                                    <input id="nombreCliente" type="text" name="nombreCliente" class="form-control"
+                                        required>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <label for="direccionPedido" class="form-label">Dirección del pedido</label>
+                                    <input id="direccionPedido" type="text" name="direccionPedido" class="form-control"
+                                        required>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <label for="fechaPedido" class="form-label">Fecha del pedido</label>
+                                    <input id="fechaPedido" type="text" name="fechaPedido" class="form-control"
+                                        required>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <label for="estadoPedido" class="form-label">Estado del pedido</label>
+                                    <select id="estadoPedido" name="estadoPedido" class="form-select">
+                                        <option value="Pendiente">Pendiente</option>
+                                        <option value="Finalizado">Finalizado</option>
+                                        <option value="Entregado">Entregado</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer justify-content-center">
+                                <button type="submit" class="btn"><img src="../../resources/imgs/save.png" alt=""
+                                        height="40px" width="40px"></button>
+                                <button type="button" class="btn" data-bs-dismiss="modal"><img
+                                        src="../../resources/imgs/close.png" alt="" height="40px" width="40px"></button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

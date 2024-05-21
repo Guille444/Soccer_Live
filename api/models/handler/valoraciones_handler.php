@@ -31,11 +31,13 @@ class ValoracionHandler
     public function searchRows()
     {
         $value = '%' . Validator::getSearchValue() . '%';
-        $sql = 'SELECT id_comentario, descripcion_comentario, fecha_comentario
+        $sql = 'SELECT id_comentario, descripcion_comentario, fecha_comentario, nombre_cliente, nombre_producto
                 FROM comentarios
-                WHERE descripcion_comentario LIKE ? OR fecha_comentario LIKE ?
+                INNER JOIN clientes USING(id_cliente)
+                INNER JOIN productos USING(id_producto)
+                WHERE nombre_cliente LIKE ?
                 ORDER BY descripcion_comentario';
-        $params = array($value, $value, $value);
+        $params = array($value);
         return Database::getRows($sql, $params);
     }
 

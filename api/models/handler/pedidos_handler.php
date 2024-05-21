@@ -9,6 +9,7 @@ class PedidoHandler
     /*
     *   Declaración de atributos para el manejo de datos.
     */
+    protected $id = null;
     protected $id_pedido = null;
     protected $id_detalle = null;
     protected $cliente = null;
@@ -111,5 +112,54 @@ class PedidoHandler
                 WHERE id_detalle = ? AND id_pedido = ?';
         $params = array($this->id_detalle, $_SESSION['idPedido']);
         return Database::executeRow($sql, $params);
+    }
+
+    /*
+    *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
+    */
+    public function searchRows()
+    {
+        $value = '%' . Validator::getSearchValue() . '%';
+        $sql = 'SELECT p.id_pedido,CONCAT(c.nombre_cliente," ",c.apellido_cliente) as cliente,
+                DATE_FORMAT(p.fecha_registro, "%d-%m-%Y") AS fecha, p.estado_pedido, p.direccion_pedido
+                FROM pedidos p
+                INNER JOIN clientes c USING(id_cliente)
+                WHERE nombre_cliente LIKE ?
+                ORDER BY direccion_pedido';
+        $params = array($value);
+        return Database::getRows($sql, $params);
+    }
+
+    public function updateRow()
+    {
+        $sql = 'UPDATE pedidos 
+                SET estado_pedido = ?
+                WHERE id_pedido = ?';
+        $params = array($this->estado, $this->id);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function readAll()
+    {
+        $sql = 'SELECT p.id_pedido,CONCAT(c.nombre_cliente," ",c.apellido_cliente) as cliente,
+        DATE_FORMAT(p.fecha_registro, "%d-%m-%Y") AS fecha, p.estado_pedido, p.direccion_pedido
+        FROM pedidos p
+        INNER JOIN clientes c USING(id_cliente)
+        ORDER BY p.fecha_registro DESC, p.estado_pedido DESC';
+        return Database::getRows($sql);
+    }
+
+    public function readOne()
+    {
+        $sql = 'SELECT p.id_pedido,CONCAT(c.nombre_cliente," ",c.apellido_cliente) as cliente,
+        DATE_FORMAT(p.fecha_registro, "%d-%m-%Y") AS fecha,p.estado_pedido, p.direccion_pedido
+        from pedidos p
+        inner join clientes c USING(id_cliente)
+        WHERE p.id_pedido = ?';
+        $params = array($this->id);
+        $data = Database::getRow($sql, $params);
+        //$_SESSION['idmod'] = $data['id_modelo'];
+
+        return $data;
     }
 }
