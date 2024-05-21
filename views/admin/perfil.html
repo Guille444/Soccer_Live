@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- Idioma para el documento -->
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -14,56 +15,58 @@
 </head>
 
 <body>
+    <!-- Contenido principal del documento -->
     <main>
+        <!-- Contenido de la sección del documento-->
         <form id="perfilForm">
-                <div class="container py-5 h-100">
-                    <div class="row justify-content-center align-items-center h-100">
-                        <div class="col-12 col-lg-9 col-xl-7">
-                            <div class="card shadow-2-strong card-registration">
-                                <div class="card-body p-4 p-md-5">
-                                    <h3 class="text-center" id="h3">EDITAR PERFIL</h3>
-                                    <div class="text-center" id="Imagen">
-                                        <img src="../../resources/imgs/logo-no-background.png" alt="" width="200"
-                                            height="50">
+            <div class="container py-5 h-100">
+                <div class="row justify-content-center align-items-center h-100">
+                    <div class="col-12 col-lg-9 col-xl-7">
+                        <div class="card shadow-2-strong card-registration">
+                            <div class="card-body p-4 p-md-5">
+                                <h3 class="text-center" id="h3">EDITAR PERFIL</h3>
+                                <div class="text-center" id="Imagen">
+                                    <img src="../../resources/imgs/logo-no-background.png" alt="" width="200"
+                                        height="50">
+                                </div>
+                                <div class="row g-3" id="formulario">
+                                    <div class="col-sm-12 col-md-6">
+                                        <label for="nombreEmpleado" class="form-label">Nombre</label>
+                                        <input id="nombreEmpleado" type="text" name="nombreEmpleado"
+                                            class="form-control" required>
                                     </div>
-                                    <div class="row g-3" id="formulario">
-                                        <div class="col-sm-12 col-md-6">
-                                            <label for="nombreEmpleado" class="form-label">Nombre</label>
-                                            <input id="nombreEmpleado" type="text" name="nombreEmpleado"
-                                                class="form-control" required>
-                                        </div>
-                                        <div class="col-sm-12 col-md-6">
-                                            <label for="apellidoEmpleado" class="form-label">Apellido</label>
-                                            <input id="apellidoEmpleado" type="text" name="apellidoEmpleado"
-                                                class="form-control" required>
-                                        </div>
-                                        <div class="col-sm-12 col-md-6">
-                                            <label for="telefonoEmpleado" class="form-label">Teléfono</label>
-                                            <input id="telefonoEmpleado" type="text" name="telefonoEmpleado"
-                                                class="form-control" required>
-                                        </div>
-                                        <div class="col-sm-12 col-md-6">
-                                            <label for="correoEmpleado" class="form-label">Correo
-                                                electrónico</label>
-                                            <input id="correoEmpleado" type="email" name="correoEmpleado"
-                                                class="form-control " required>
-                                        </div>
-
+                                    <div class="col-sm-12 col-md-6">
+                                        <label for="apellidoEmpleado" class="form-label">Apellido</label>
+                                        <input id="apellidoEmpleado" type="text" name="apellidoEmpleado"
+                                            class="form-control" required>
                                     </div>
-                                    <div class="mt-4 pt-2 text-center">
-                                        <button class="buttonG" type="submit">Guardar</button>
+                                    <div class="col-sm-12 col-md-6">
+                                        <label for="telefonoEmpleado" class="form-label">Teléfono</label>
+                                        <input id="telefonoEmpleado" type="text" name="telefonoEmpleado"
+                                            class="form-control" required>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <label for="correoEmpleado" class="form-label">Correo
+                                            electrónico</label>
+                                        <input id="correoEmpleado" type="email" name="correoEmpleado"
+                                            class="form-control " required>
+                                    </div>
 
-                                        <div class="text-center p-3">
-                                            <button type="button" class="buttonM" onclick="openPassword()">
-                                                <i class="bi bi-shield-lock"></i> Cambiar contraseña
-                                            </button>
-                                        </div>
+                                </div>
+                                <div class="mt-4 pt-2 text-center">
+                                    <button class="buttonG" type="submit">Guardar</button>
+
+                                    <div class="text-center p-3">
+                                        <button type="button" class="buttonM" onclick="openPassword()">
+                                            <i class="bi bi-shield-lock"></i> Cambiar contraseña
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </form>
 
         <div class="modal fade" id="passwordModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -98,9 +101,9 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn" data-bs-dismiss="modal"><img
-                                src="../../resources/imgs/close.png" alt="" height="40px" width="40px"></button>
+                                    src="../../resources/imgs/close.png" alt="" height="40px" width="40px"></button>
                             <button type="submit" class="btn"><img src="../../resources/imgs/save.png" alt=""
-                                height="40px" width="40px"></button>
+                                    height="40px" width="40px"></button>
                         </div>
                     </form>
                 </div>
@@ -110,7 +113,7 @@
 
     <!-- Inclusión de la librería de mascaras. Para más información https://github.com/text-mask/text-mask -->
     <script type="text/javascript" src="../../resources/js/vanillaTextMask.js"></script>
-    
+
     <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
@@ -123,7 +126,7 @@
     <!-- Llamada al controlador de la página web -->
     <script type="text/javascript" src="../../controllers/admin/perfil.js"></script>
 
-    
+
 </body>
 
 </html>
