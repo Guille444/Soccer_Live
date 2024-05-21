@@ -8,6 +8,12 @@ const PASSWORD_MODAL = new bootstrap.Modal('#passwordModal');
 // Constante para establecer el formulario de cambiar contraseña.
 const PASSWORD_FORM = document.getElementById('passwordForm');
 
+// Llamada a la función para establecer la mascara del campo teléfono.
+vanillaTextMask.maskInput({
+    inputElement: document.getElementById('telefonoEmpleado'),
+    mask: [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+});
+
 document.addEventListener('DOMContentLoaded', async () => {
     // Llamada a la función para mostrar el encabezado y pie del documento.
     loadTemplate();
