@@ -76,7 +76,7 @@ const fillTable = async (form = null) => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TABLE_BODY.innerHTML += `
                 <tr>
-                    <td>${row.id_cliente}</td>
+                    <td>${row.nombre_cliente}</td>
                     <td>${row.nombre_producto}</td>
                     <td>${row.descripcion_comentario}</td>
                     <td>${row.fecha_comentario}</td>
@@ -117,7 +117,7 @@ const openUpdate = async (id) => {
         // Se inicializan los campos con los datos.
         const ROW = DATA.dataset;
         ID_VALORACION.value = ROW.id_comentario;
-        ESTADO_VALORACION.checked = ROW.estado_valoracion;
+        ESTADO_VALORACION.checked = ROW.estado_comentario;
     } else {
         sweetAlert(2, DATA.error, false);
     }
