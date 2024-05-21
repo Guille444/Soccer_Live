@@ -5,3 +5,9 @@
 body {
   background-image: linear-gradient(to right, #14A4EE, #126BA8, #0C3A6B, #081F49) !important;
 }
+
+#footerColor{
+  background-color:#458CC6 ;
+  color: #fff;
+  background:#458CC6;
+}

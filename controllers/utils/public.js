@@ -133,7 +133,7 @@ const loadTemplate = async () => {
     /// Se agrega el pie de la página web después del contenido principal.
     MAIN.insertAdjacentHTML('afterend', `
         <footer>
-            <nav class="navbar fixed-bottom bg-body-tertiary">
+            <nav class="navbar fixed-bottom" id="footerColor">
                 <div class="container">
                     <div>
                         <h6>Soccer Live</h6>
@@ -266,7 +266,7 @@ const loadTemplate2 = async () => {
     /// Se agrega el pie de la página web después del contenido principal.
     MAIN.insertAdjacentHTML('afterend', `
         <footer>
-            <nav class="navbar fixed-bottom bg-body-tertiary">
+            <nav class="navbar fixed-bottom" id="footerColor">
                 <div class="container">
                     <div>
                         <h6>Soccer Live</h6>
@@ -399,7 +399,7 @@ const loadTemplate3 = async () => {
     /// Se agrega el pie de la página web después del contenido principal.
     MAIN.insertAdjacentHTML('afterend', `
         <footer>
-            <nav class="navbar fixed-bottom bg-body-tertiary">
+            <nav class="navbar fixed-bottom" id="footerColor">
                 <div class="container">
                     <div>
                         <h6>Soccer Live</h6>
@@ -532,7 +532,7 @@ const loadTemplate4 = async () => {
     /// Se agrega el pie de la página web después del contenido principal.
     MAIN.insertAdjacentHTML('afterend', `
         <footer>
-            <nav class="navbar fixed-bottom bg-body-tertiary">
+            <nav class="navbar fixed-bottom " id="footerColor">
                 <div class="container">
                     <div>
                         <h6>Soccer Live</h6>
@@ -665,7 +665,7 @@ const loadTemplate5 = async () => {
     /// Se agrega el pie de la página web después del contenido principal.
     MAIN.insertAdjacentHTML('afterend', `
         <footer>
-            <nav class="navbar fixed-bottom bg-body-tertiary">
+            <nav class="navbar fixed-bottom " id="footerColor">
                 <div class="container">
                     <div>
                         <h6>Soccer Live</h6>
@@ -798,7 +798,7 @@ const loadTemplate6 = async () => {
     /// Se agrega el pie de la página web después del contenido principal.
     MAIN.insertAdjacentHTML('afterend', `
         <footer>
-            <nav class="navbar fixed-bottom bg-body-tertiary">
+            <nav class="navbar fixed-bottom " id="footerColor">
                 <div class="container">
                     <div>
                         <h6>Soccer Live</h6>
@@ -931,7 +931,7 @@ const loadTemplate7 = async () => {
     /// Se agrega el pie de la página web después del contenido principal.
     MAIN.insertAdjacentHTML('afterend', `
         <footer>
-            <nav class="navbar fixed-bottom bg-body-tertiary">
+            <nav class="navbar fixed-bottom" id="footerColor">
                 <div class="container">
                     <div>
                         <h6>Soccer Live</h6>
