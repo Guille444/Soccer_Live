@@ -57,10 +57,10 @@
                                 <td colspan="7" id="rowsFound"></td>
                             </tr>
                             <tr>
-                                <th class="text-center" id="tabla">APELLIDO</th>
-                                <th class="text-center" id="tabla">NOMBRE</th>
-                                <th class="text-center" id="tabla">TELÉFONO</th>
-                                <th class="text-center" id="tabla">CORREO ELECTRÓNICO</th>
+                                <th class="text-center" id="tabla">CLIENTE</th>
+                                <th class="text-center" id="tabla">PRODUCTO</th>
+                                <th class="text-center" id="tabla">COMENTARIO</th>
+                                <th class="text-center" id="tabla">FECHA DE VALORACION</th>
                                 <th class="text-center" id="tabla">ESTADO</th>
                                 <th class="text-center" id="tabla">ACCIONES</th>
                             </tr>
@@ -82,12 +82,12 @@
                         </div>
                         <form id="saveForm">
                             <!-- Campo oculto para asignar el id del registro al momento de modificar -->
-                            <input type="hidden" id="idCliente" name="idCliente">
+                            <input type="hidden" id="idValoracion" name="idValoracion">
                             <div class="modal-body row g-3" id="modal-fondo">
                                 <div class="form-check form-switch form-check-reverse">
-                                    <input class="form-check-input" type="checkbox" id="estadoCliente"
-                                        name="estadoCliente" checked>
-                                    <label class="form-check-label" for="estadoCliente">Estado</label>
+                                    <input class="form-check-input" type="checkbox" id="estadoValoracion"
+                                        name="estadoValoracion" checked>
+                                    <label class="form-check-label" for="estadoValoracion">Estado</label>
                                 </div>
                             </div>
                             <div class="modal-footer justify-content-center">
