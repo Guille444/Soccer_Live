@@ -10,6 +10,10 @@ main {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+#mainTitle {
+    color: white;
+}
+
 .carousel-item {
     height: 65vh;
     min-height: 300px;
@@ -32,8 +36,8 @@ main {
     border-top-right-radius: calc(0.25rem - 1px);
 }
 
-#footerColor{
-    background:#458CC6;
+#footerColor {
+    background: #458CC6;
     color: #fff;
-     ;
-  }
+    ;
+}

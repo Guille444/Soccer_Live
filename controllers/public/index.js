@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             let url = `balones.html?id=${row.id_categoria}&nombre=${row.nombre_categoria}`;
             // Se crean y concatenan las tarjetas con los datos de cada categoría.
             CATEGORIAS.innerHTML += `
-                <div class="col-sm-12 col-md-6 col-lg-3">
+                <div class="col-sm-12 col-md-6 col-lg-3 mb-5 mt-2">
                     <div class="card mb-3">
                         <img src="${SERVER_URL}images/categorias/${row.imagen_categoria}" class="card-img-top" alt="${row.nombre_categoria}">
                         <div class="card-body text-center">
@@ -36,5 +36,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     } else {
         // Se asigna al título del contenido de la excepción cuando no existen datos para mostrar.
         document.getElementById('mainTitle').textContent = DATA.error;
-    }
+    } 
 });
