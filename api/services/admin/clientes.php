@@ -15,6 +15,7 @@ if (isset($_GET['action'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un cliente ha iniciado sesión.
         switch ($_GET['action']) {
+            //caso para hacer una busqueda 
             case 'searchRows':
                 if (!Validator::validateSearch($_POST['search'])) {
                     $result['error'] = Validator::getSearchError();
@@ -25,6 +26,7 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'No hay coincidencias';
                 }
                 break;
+                //caso de una alerta para ver si hay un cliente regristrado
             case 'readAll':
                 if ($result['dataset'] = $cliente->readAll()) {
                     $result['status'] = 1;
@@ -33,6 +35,7 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'No existen clientes registrados';
                 }
                 break;
+                //caso leer si hay una cliente
             case 'readOne':
                 if (!$cliente->setId($_POST['idCliente'])) {
                     $result['error'] = 'Cliente incorrecto';
@@ -42,6 +45,7 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'C liente inexistente';
                 }
                 break;
+                //caso para actualizar un cliente
             case 'updateRow':
                 $_POST = Validator::validateForm($_POST);
                 if (
@@ -57,6 +61,7 @@ if (isset($_GET['action'])) {
                 }
 
                 break;
+                //caso para obtener la informacion de un usuario?
             case 'getUser':
                 if (isset($_SESSION['correoCliente'])) {
                     $result['status'] = 1;
