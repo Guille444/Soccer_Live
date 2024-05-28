@@ -21,3 +21,8 @@ main {
   color: #FFFFFF;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+#footerColor{
+  color: #fff;
+  background:#458CC6!important ; 
+}
