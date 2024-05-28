@@ -48,7 +48,7 @@ const loadTemplate = async () => {
                                 <ul class="navbar-nav ms-auto">
                                     <li class="nav-item">
                                         <div class="navbar-nav ms-auto">
-                                        <a class="nav-link" href="index.html"><i class="bi bi-shop"></i> CATÁLAGO</a>
+                                        <a class="nav-link" href="index.html" id="index"><i class="bi bi-shop"></i> CATÁLAGO</a>
                                             <a class="nav-link" href="carrito.html"><i class="bi bi-cart"></i> CARRITO</a>
                                             <a class="nav-link" href="#" onclick="logOut()"><i class="bi bi-box-arrow-left"></i> CERRAR SESIÓN</a>
                                         </div>
@@ -87,7 +87,7 @@ const loadTemplate = async () => {
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item">
                                     <div class="navbar-nav ms-auto">
-                                    <a class="nav-link" href="index.html"><i class="bi bi-shop"></i> CATÁLAGO</a>
+                                    <a class="nav-link" href="index.html" id="index"><i class="bi bi-shop"></i> CATÁLAGO</a>
                                         <a class="nav-link" href="registro.html"><i class="bi bi-person"></i> CREAR CUENTA </a>
                                         <a class="nav-link" href="login.html"><i class="bi bi-box-arrow-right"></i> INICIAR SESIÓN</a>
                                     </div>
