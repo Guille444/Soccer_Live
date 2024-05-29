@@ -2,17 +2,25 @@
     color: #A8E910;
 }
 
-#fondo {
-    background-color: transparent !important;
-    border-color: transparent !important;
-}
-
 body {
-    background-image: linear-gradient(to right, #14A4EE, #126BA8, #0C3A6B, #081F49);
+    background-image: linear-gradient(to right, #14A4EE, #126BA8, #0C3A6B, #081F49) !important;
+    background-color: transparent !important;
+    /* Asegúrate de que no haya color de fondo */
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    /* Asegúrate de que el body ocupe toda la altura de la ventana */
+    overflow: hidden;
 }
 
-#chart1 {
-    color: white;
+main {
+    background-color: transparent !important;
+}
+
+#chart1,
+#chart2 {
+    background-color: transparent !important;
+    border: none !important;
 }
 
 #mainTitle {
