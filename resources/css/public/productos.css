@@ -44,3 +44,18 @@ main {
 #index{
     color: #A8E910;
 }
+
+#cards{
+    background: #064168!important;
+    color: #fff;
+    border-color: #458CC6;
+    border-radius: 25px;
+    border: 5px solid  #458CC6;
+}
+
+#lista{
+    background: #064168;
+    color: #fff;
+    border: #458CC6;
+   
+    }
