@@ -31,7 +31,7 @@ main {
 
 .card-img-top {
     width: 100%;
-    height: 200px !important;
+    height: 300px !important;
     border-top-left-radius: calc(0.25rem - 1px);
     border-top-right-radius: calc(0.25rem - 1px);
 }
@@ -44,3 +44,46 @@ main {
 #index{
     color: #A8E910;
 }
+
+#cards{
+    background: #064168!important;
+    color: #fff;
+    border-color: #458CC6;
+    border-radius: 25px;
+    border: 5px solid  #458CC6;
+    /*box-shadow: 5px 5px #000;*/
+    
+}
+
+
+#VerProductos{
+    background: #064168 !important;
+    cursor: pointer;
+    position: relative;
+    padding: 10px 24px;
+    font-size: 15px;
+    color: #FFF;
+    border: 2px solid #458CC6;
+    border-radius: 20px;
+    background-color: transparent;
+    font-weight: 1000;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+    overflow: hidden;
+  }
+
+
+
+  #VerProductos:hover::before {
+    scale: 3;
+  }
+  
+  #VerProductos:hover {
+    color: #FFF;
+    scale: 1.1;
+    box-shadow: 0 0px 20px #458CC6;
+  }
+  
+  #VerProductos:active {
+    scale: 1;
+  }
+  
