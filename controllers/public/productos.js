@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <li class="list-group-item"id="lista">Precio unitario (US$): ${row.precio_producto}</li>
                             <li class="list-group-item"id="lista">Existencias: ${row.existencias_producto}</li>
                         </ul>
-                        <div class="card-body text-center">
-                            <a href="detalle.html?id=${row.id_producto}" class="btn btn-primary">Ver detalle</a>
+                        <div class="card-body text-center" >
+                            <a href="detalle.html?id=${row.id_producto}" class="btn btn-primary" id="verDetalle">Ver detalle</a>
                         </div>
                     </div>
                 </div>

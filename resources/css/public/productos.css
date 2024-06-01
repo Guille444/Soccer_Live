@@ -50,7 +50,7 @@ main {
     color: #fff;
     border-color: #458CC6;
     border-radius: 25px;
-    border: 5px solid  #458CC6;
+    border: 5px solid  #AFBBF2;
 }
 
 #lista{
@@ -59,3 +59,35 @@ main {
     border: #458CC6;
    
     }
+
+    #verDetalle{
+        background: #AFBBF2 !important;
+        cursor: pointer;
+        position: relative;
+        padding: 10px 24px;
+        font-size: 15px;
+        color: #FFF;
+        border: 2px solid #AFBBF2;
+        border-radius: 20px;
+        background-color: transparent;
+        font-weight: 1000;
+        transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+        overflow: hidden;
+      }
+    
+    
+    
+      #verDetalle:hover::before {
+        scale: 3;
+      }
+      
+      #verDetalle:hover {
+        color: #FFF;
+        scale: 1.1;
+        box-shadow: 0 0px 20px #AFBBF2;
+      }
+      
+      #verDetalle:active {
+        scale: 1;
+      }
+      

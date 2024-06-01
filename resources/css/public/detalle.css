@@ -44,3 +44,48 @@ main {
 #index{
     color: #A8E910;
 }
+
+#detalle{
+    background: #064168;
+    color: #fff;
+    border-color: #458CC6;
+    border-radius: 25px;
+    border: 5px solid  #458CC6;
+}
+
+
+
+#Compra{
+    background: #458CC6 !important;
+    cursor: pointer;
+    position: relative;
+    padding: 10px 24px;
+    font-size: 15px;
+    color: #FFF;
+    border: 2px solid #458CC6;
+    border-radius: 20px;
+    background-color: transparent;
+    font-weight: 1000;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+    overflow: hidden;
+  }
+
+
+
+  #Compra:hover::before {
+    scale: 3;
+  }
+  
+  #Compra:hover {
+    color: #FFF;
+    scale: 1.1;
+    box-shadow: 0 0px 20px #fff;
+  }
+  
+  #Compra:active {
+    scale: 1;
+  }
+  
+  #imagenProducto{
+    
+  }
