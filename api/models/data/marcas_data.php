@@ -33,24 +33,44 @@ class MarcaData extends MarcaHandler
         if (!Validator::validateAlphanumeric($value)) {
             $this->data_error = 'El nombre debe ser un valor alfanumérico';
             return false;
-        } elseif (Validator::validateLength($value, $min, $max)) {
+        }
+        // Primero, verificar si el nombre ya existe
+        elseif ($this->checkDuplicate($value)) {
+            $this->data_error = 'El nombre de la marca ingresada ya existe';
+            return false;
+        }
+        // Después, validar la longitud del nombre
+        elseif (Validator::validateLength($value, $min, $max)) {
             $this->nombre = $value;
             return true;
-        } else {
+        }
+        // Si la longitud del nombre no es válida
+        else {
             $this->data_error = 'El nombre debe tener una longitud entre ' . $min . ' y ' . $max;
             return false;
         }
     }
 
+
     public function setCorreo($value, $min = 8, $max = 100)
     {
-        if (!Validator::validateEmail($value)) {
+        // Primero, verificar si el correo ya existe
+        if ($this->checkDuplicate2($value)) {
+            $this->data_error = 'El correo de la marca ingresado ya existe';
+            return false;
+        }
+        // Después, validar que el correo sea válido
+        elseif (!Validator::validateEmail($value)) {
             $this->data_error = 'El correo no es válido';
             return false;
-        } elseif (Validator::validateLength($value, $min, $max)) {
+        }
+        // Validar la longitud del correo
+        elseif (Validator::validateLength($value, $min, $max)) {
             $this->correo = $value;
             return true;
-        } else {
+        }
+        // Si la longitud del correo no es válida
+        else {
             $this->data_error = 'El correo debe tener una longitud entre ' . $min . ' y ' . $max;
             return false;
         }

@@ -143,8 +143,26 @@ class EmpleadoHandler
     {
         $sql = 'SELECT id_empleado
                 FROM empleados
-                WHERE dui_empleado = ? OR correo_empleado = ?';
-        $params = array($value, $value);
+                WHERE dui_empleado = ?';
+        $params = array($value);
+        return Database::getRow($sql, $params);
+    }
+
+    public function checkDuplicate2($value)
+    {
+        $sql = 'SELECT id_empleado
+                FROM empleados
+                WHERE correo_empleado = ?';
+        $params = array($value);
+        return Database::getRow($sql, $params);
+    }
+
+    public function checkDuplicate3($value)
+    {
+        $sql = 'SELECT id_empleado
+                FROM empleados
+                WHERE telefono_empleado = ?';
+        $params = array($value);
         return Database::getRow($sql, $params);
     }
 }

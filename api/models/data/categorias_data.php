@@ -30,15 +30,25 @@ class CategoriaData extends CategoriaHandler
 
     public function setNombre($value, $min = 2, $max = 50)
     {
-        if (!Validator::validateAlphanumeric($value)) {
+        // Primero, verificar si el nombre ya existe
+        if ($this->checkDuplicate($value)) {
+            $this->data_error = 'El nombre de la categoría ingresada ya existe';
+            return false;
+        }
+        // Validar que el nombre sea alfanumérico
+        elseif (!Validator::validateAlphanumeric($value)) {
             $this->data_error = 'El nombre debe ser un valor alfanumérico';
             return false;
-        } elseif (Validator::validateLength($value, $min, $max)) {
-            $this->nombre = $value;
-            return true;
-        } else {
+        }
+        // Validar la longitud del nombre
+        elseif (!Validator::validateLength($value, $min, $max)) {
             $this->data_error = 'El nombre debe tener una longitud entre ' . $min . ' y ' . $max;
             return false;
+        }
+        // Si pasa todas las validaciones, asignar el valor
+        else {
+            $this->nombre = $value;
+            return true;
         }
     }
 

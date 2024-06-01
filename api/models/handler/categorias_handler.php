@@ -81,4 +81,13 @@ class CategoriaHandler
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+    public function checkDuplicate($value)
+    {
+        $sql = 'SELECT id_categoria
+                FROM categorias
+                WHERE nombre_categoria = ?';
+        $params = array($value);
+        return Database::getRow($sql, $params);
+    }
 }

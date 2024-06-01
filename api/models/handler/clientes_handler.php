@@ -136,8 +136,8 @@ class ClienteHandler
     {
         $sql = 'SELECT id_cliente
                 FROM clientes
-                WHERE dui_cliente = ? OR correo_cliente = ?';
-        $params = array($value, $value);
+                WHERE correo_cliente = ?';
+        $params = array($value);
         return Database::getRow($sql, $params);
     }
 }

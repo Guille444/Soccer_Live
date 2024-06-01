@@ -54,24 +54,12 @@ class EmpleadoData extends EmpleadoHandler
         }
     }
 
-    
-    public function setTelefono($value)
-    {
-        if (Validator::validatePhone($value)) {
-            $this->telefono = $value;
-            return true;
-        } else {
-            $this->data_error = 'El teléfono debe tener el formato (2, 6, 7)###-####';
-            return false;
-        }
-    }
-
     public function setDUI($value)
     {
         if (!Validator::validateDUI($value)) {
             $this->data_error = 'El DUI debe tener el formato ########-#';
             return false;
-        } elseif($this->checkDuplicate($value)) {
+        } elseif ($this->checkDuplicate($value)) {
             $this->data_error = 'El DUI ingresado ya existe';
             return false;
         } else {
@@ -85,6 +73,9 @@ class EmpleadoData extends EmpleadoHandler
         if (!Validator::validateEmail($value)) {
             $this->data_error = 'El correo no es válido';
             return false;
+        } elseif ($this->checkDuplicate2($value)) {
+            $this->data_error = 'El correo ingresado ya existe';
+            return false;
         } elseif (Validator::validateLength($value, $min, $max)) {
             $this->correo = $value;
             return true;
@@ -93,7 +84,27 @@ class EmpleadoData extends EmpleadoHandler
             return false;
         }
     }
-    
+
+    public function setTelefono($value)
+    {
+        // Primero, verificar si el teléfono ya existe
+        if ($this->checkDuplicate3($value)) {
+            $this->data_error = 'El teléfono ingresado ya existe';
+            return false;
+        }
+        // Después, validar el formato del teléfono
+        elseif (Validator::validatePhone($value)) {
+            $this->telefono = $value;
+            return true;
+        }
+        // Si el formato del teléfono no es válido
+        else {
+            $this->data_error = 'El teléfono debe tener el formato (2, 6, 7)###-####';
+            return false;
+        }
+    }
+
+
     public function setClave($value)
     {
         if (Validator::validatePassword($value)) {

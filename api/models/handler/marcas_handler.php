@@ -80,4 +80,22 @@ class MarcaHandler
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+    public function checkDuplicate($value)
+    {
+        $sql = 'SELECT id_marca
+                FROM marcas
+                WHERE nombre_marca = ?';
+        $params = array($value);
+        return Database::getRow($sql, $params);
+    }
+
+    public function checkDuplicate2($value)
+    {
+        $sql = 'SELECT id_marca
+                FROM marcas
+                WHERE correo_marca = ?';
+        $params = array($value);
+        return Database::getRow($sql, $params);
+    }
 }
