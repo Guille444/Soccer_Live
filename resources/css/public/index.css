@@ -50,20 +50,18 @@ main {
     color: #fff;
     border-color: #458CC6;
     border-radius: 25px;
-    border: 5px solid  #B5DFCA;
-    /*box-shadow: 5px 5px #000;*/
-    
+    /* box-shadow: 5px 5px #000; */    
 }
 
 
 #VerProductos{
-    background: #B5DFCA !important;
+    background: #458CC6 !important;
     cursor: pointer;
     position: relative;
     padding: 10px 24px;
     font-size: 15px;
     color: #FFF;
-    border: 2px solid #B5DFCA;
+    border: 2px solid #458CC6;
     border-radius: 20px;
     background-color: transparent;
     font-weight: 1000;
@@ -80,7 +78,7 @@ main {
   #VerProductos:hover {
     color: #FFF;
     scale: 1.1;
-    box-shadow: 0 0px 20px #B5DFCA;
+    box-shadow: 0 0px 20px #458CC6;
   }
   
   #VerProductos:active {

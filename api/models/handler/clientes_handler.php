@@ -13,7 +13,7 @@ class ClienteHandler
     protected $nombre = null;
     protected $apellido = null;
     protected $direccion = null;
-    protected $telefono = null; 
+    protected $telefono = null;
     protected $correo = null;
     protected $clave = null;
     protected $estado = null;
