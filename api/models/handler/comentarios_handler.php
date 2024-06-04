@@ -78,15 +78,14 @@ class ComentarioHandler
     public function readAllActive()
     {
         $sql = 'select id_producto,id_comentario,id_detalle,CONCAT(nombre_cliente," ",apellido_cliente) as cliente,
-        CONCAT(descripcion_marca," ",descripcion_producto) as modelo,contenido_comentario,
+        CONCAT(descripcion_producto) as modelo,contenido_comentario,
         puntuacion_comentario,estado_comentario,
         DATE_FORMAT(fecha_comentario, "%d-%m-%Y - %h:%i %p") AS fecha_comentario
         from comentarios 
         INNER JOIN detalle_pedidos dp USING(id_detalle)
-        INNER JOIN pedidos p USING(id_pedido)
-        INNER JOIN clientes c USING(id_cliente)
-        INNER JOIN productos mo USING (id_producto)
-        INNER JOIN marcas ma USING (id_marca)
+        INNER JOIN pedidos USING(id_pedido)
+        INNER JOIN clientes  USING(id_cliente)
+        INNER JOIN productos USING (id_producto)
         WHERE id_producto = ? AND estado_comentario=true
         ORDER BY puntuacion_comentario DESC';
         //echo $this->idProducto. ' que';
