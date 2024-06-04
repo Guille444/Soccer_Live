@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <div class="card mb-3" id="cards">
                         <img src="${SERVER_URL}images/productos/${row.imagen_producto}" class="card-img-top" alt="${row.nombre_producto}">
                         <div class="card-body">
-                            <h5 class="card-title">${row.nombre_producto}</h5>
+                            <h5 class="card-title text-center">${row.nombre_producto}</h5>
                         </div>
                         <ul class="list-group list-group-flush" id="lista">
                             <li class="list-group-item"id="lista">Precio unitario (US$): ${row.precio_producto}</li>
