@@ -48,13 +48,11 @@ const loadTemplate = async () => {
                                 <ul class="navbar-nav ms-auto">
                                     <li class="nav-item">
                                         <div class="navbar-nav ms-auto">
-                                        <a class="nav-link" href="index.html" id="index"><i class="bi bi-shop"></i> CATÁLAGO</a>
-                                            <a class="nav-link" href="carrito.html"><i class="bi bi-cart"></i> CARRITO</a>
-                                            <a class="nav-link" href="#" onclick="logOut()"><i class="bi bi-box-arrow-left"></i> CERRAR SESIÓN</a>
+                                        <a class="nav-link" href="index.html" id="index"><i class="bi bi-shop"></i> CATÁLAGO </a>
+                                            <a class="nav-link" href="carrito.html"><i class="bi bi-cart"></i> CARRITO </a>
+                                            <a class="nav-link" href="perfil.html"><i class="bi bi-person-fill"></i> PERFIL </a>
+                                            <a class="nav-link" href="#" onclick="logOut()"><i class="bi bi-box-arrow-left"></i> CERRAR SESIÓN </a>
                                         </div>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="../public/info.html">¿QUIÉNES SOMOS?</a>
                                     </li>
                                 </ul>
                             </div>
@@ -87,9 +85,9 @@ const loadTemplate = async () => {
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item">
                                     <div class="navbar-nav ms-auto">
-                                    <a class="nav-link" href="index.html" id="index"><i class="bi bi-shop"></i> CATÁLAGO</a>
+                                    <a class="nav-link" href="index.html" id="index"><i class="bi bi-shop"></i> CATÁLAGO </a>
                                         <a class="nav-link" href="registro.html"><i class="bi bi-person"></i> CREAR CUENTA </a>
-                                        <a class="nav-link" href="login.html"><i class="bi bi-box-arrow-right"></i> INICIAR SESIÓN</a>
+                                        <a class="nav-link" href="login.html"><i class="bi bi-box-arrow-right"></i> INICIAR SESIÓN </a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
