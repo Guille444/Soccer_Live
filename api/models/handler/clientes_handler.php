@@ -21,12 +21,35 @@ class ClienteHandler
     /*
     *   Métodos para gestionar la cuenta del cliente.
     */
-    public function checkUser($mail, $password)
+
+
+    /*
+      
+
+
+     public function checkUser($username, $password)
+    {
+        $sql = 'SELECT id_cliente, correo_cliente, clave_cliente, estado_cliente
+        FROM clientes
+        WHERE correo_cliente = ?';
+        $params = array($username);
+        $data = Database::getRow($sql, $params);
+        if ($data && password_verify($password, $data['clave_empleado'])) {
+            $_SESSION['idCliente'] = $data['id_cliente'];
+            $_SESSION['correoCliente'] = $data['correo_cliente'];
+            return true;
+        } else {
+            return false;
+        }
+    }
+    */
+
+   public function checkUser($username, $password)
     {
         $sql = 'SELECT id_cliente, correo_cliente, clave_cliente, estado_cliente
                 FROM clientes
                 WHERE correo_cliente = ?';
-        $params = array($mail);
+        $params = array($username);
         if (!($data = Database::getRow($sql, $params))) {
             return false;
         } else if (password_verify($password, $data['clave_cliente'])) {
@@ -50,12 +73,27 @@ class ClienteHandler
         }
     }
 
+    public function checkPassword($password)
+    {
+        $sql = 'SELECT clave_cliente
+                FROM clientes
+                WHERE id_cliente = ?';
+        $params = array($_SESSION['idCliente']);
+        $data = Database::getRow($sql, $params);
+        // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
+        if (password_verify($password, $data['clave_cliente'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function changePassword()
     {
         $sql = 'UPDATE clientes
                 SET clave_cliente = ?
                 WHERE id_cliente = ?';
-        $params = array($this->clave, $this->id);
+        $params = array($this->clave, $_SESSION['idCliente']);
         return Database::executeRow($sql, $params);
     }
 

@@ -3,7 +3,7 @@ const PERFIL_FORM = document.getElementById('perfilForm'),
     NOMBRE_CLIENTE = document.getElementById('nombreCliente'),
     APELLIDO_CLIENTE = document.getElementById('apellidoCliente'),
     TELEFONO_CLIENTE = document.getElementById('telefonoCliente'),
-    CORREO_CLIENTE = document.getElementById('correoCliente');
+    CORREO_CLIENTE = document.getElementById('correoCliente'),
     DIRECCION_CLIENTE = document.getElementById('direccionCliente');
 const PASSWORD_MODAL = new bootstrap.Modal('#passwordModal');
 // Constante para establecer el formulario de cambiar contraseña.
