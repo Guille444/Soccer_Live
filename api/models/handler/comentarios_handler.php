@@ -34,7 +34,7 @@ class ComentarioHandler
         $this->search = $this->search === '' ? '%%' : '%' . $this->search . '%';
 
         $sql = 'select id_comentario,id_detalle,CONCAT(nombre_cliente," ",apellido_cliente) as cliente,
-        CONCAT(descripcion_marca," ",descripcion_producto) as modelo,contenido_comentario,
+        CONCAT(descripcion_marca," ",nombre_producto) as modelo,contenido_comentario,
         puntuacion_comentario,estado_comentario,
         DATE_FORMAT(cm.fecha_comentario, "%d-%m-%Y - %h:%i %p") AS fecha_comentario
         from comentarios cm
@@ -44,7 +44,7 @@ class ComentarioHandler
         INNER JOIN productos mo USING (id_producto)
         INNER JOIN marcas ma USING (id_marca)
         WHERE CONCAT(nombre_cliente," ",apellido_cliente) like ? 
-        OR CONCAT(descripcion_marca," ",descripcion_producto) like ?
+        OR CONCAT(descripcion_marca," ",nombre_producto) like ?
         ORDER BY fecha_comentario DESC, estado_comentario DESC';
 
         $params = array($this->search, $this->search);
@@ -63,7 +63,7 @@ class ComentarioHandler
     public function readAll()
     {
         $sql = 'select id_comentario,id_detalle,CONCAT(nombre_cliente," ",apellido_cliente) as cliente,
-        CONCAT(descripcion_marca," ",descripcion_producto) as modelo,contenido_comentario,
+        CONCAT(nombre_producto) as modelo,contenido_comentario,
         puntuacion_comentario,estado_comentario,
         DATE_FORMAT(cm.fecha_comentario, "%d-%m-%Y - %h:%i %p") AS fecha_comentario
         from comentarios cm
@@ -78,7 +78,7 @@ class ComentarioHandler
     public function readAllActive()
     {
         $sql = 'select id_producto,id_comentario,id_detalle,CONCAT(nombre_cliente," ",apellido_cliente) as cliente,
-        CONCAT(descripcion_producto) as modelo,contenido_comentario,
+        CONCAT(nombre_producto) as modelo,contenido_comentario,
         puntuacion_comentario,estado_comentario,
         DATE_FORMAT(fecha_comentario, "%d-%m-%Y - %h:%i %p") AS fecha_comentario
         from comentarios 
@@ -96,7 +96,7 @@ class ComentarioHandler
     public function readByIdDetalle()
     {
         $sql = 'select id_producto,id_comentario,id_detalle,CONCAT(nombre_cliente," ",apellido_cliente) as cliente,
-        CONCAT(descripcion_marca," ",descripcion_producto) as modelo,contenido_comentario,
+        CONCAT(descripcion_marca," ",nombre_producto) as modelo,contenido_comentario,
         puntuacion_comentario,estado_comentario,
         DATE_FORMAT(fecha_comentario, "%d-%m-%Y - %h:%i %p") AS fecha_comentario
         from comentarios 
@@ -114,7 +114,7 @@ class ComentarioHandler
     public function readByIdComentario()
     {
         $sql = 'select id_producto,id_comentario,id_detalle,CONCAT(nombre_cliente," ",apellido_cliente) as cliente,
-        CONCAT(descripcion_marca," ",descripcion_producto) as modelo,contenido_comentario,
+        CONCAT(descripcion_marca," ",nombre_producto) as modelo,contenido_comentario,
         puntuacion_comentario,estado_comentario,
         DATE_FORMAT(fecha_comentario, "%d-%m-%Y - %h:%i %p") AS fecha_comentario
         from comentarios 
@@ -134,7 +134,7 @@ class ComentarioHandler
     public function readOne()
     {
         $sql = 'select id_comentario,id_detalle,CONCAT(nombre_cliente," ",apellido_cliente) as cliente,
-        CONCAT(descripcion_marca," ",descripcion_producto) as modelo,contenido_comentario,
+        CONCAT(nombre_producto) as modelo,contenido_comentario,
         puntuacion_comentario,estado_comentario,
         DATE_FORMAT(cm.fecha_comentario, "%d-%m-%Y - %h:%i %p") AS fecha_comentario
         from comentarios cm
@@ -185,7 +185,7 @@ class ComentarioHandler
         INNER JOIN ctg_marcas ma USING(id_marca)
         WHERE mo.id_marca LIKE ? OR estado="A"
         ORDER BY mo.descripcion';
-            /*'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, existencias_producto
+            /*'SELECT id_producto, imagen_producto, nombre_producto, nombre_producto, precio_producto, existencias_producto
                 FROM producto
                 INNER JOIN categoria USING(id_categoria)
                 WHERE id_categoria = ? AND estado_producto = true

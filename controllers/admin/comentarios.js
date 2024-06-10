@@ -1,7 +1,5 @@
 // Constante para completar la ruta de la API.
-const VALORACION_API = 'services/admin/valoraciones.php';
-const CLIENTE_API = 'services/admin/clientes.php';
-const PRODUCTO_API = 'services/admin/productos.php';
+const COMENTARIO_API = 'services/admin/comentarios.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('searchForm');
 // Constantes para establecer los elementos de la tabla.
@@ -12,8 +10,13 @@ const SAVE_MODAL = new bootstrap.Modal('#saveModal'),
     MODAL_TITLE = document.getElementById('modalTitle');
 // Constantes para establecer los elementos del formulario de guardar.
 const SAVE_FORM = document.getElementById('saveForm'),
-    ID_VALORACION = document.getElementById('idValoracion'),
-    ESTADO_VALORACION = document.getElementById('estadoValoracion');
+    ID_COMENTARIO = document.getElementById('idComentario'),
+    CLIENTE_COMENTARIO = document.getElementById('clienteComentario'),
+    CONTENIDO_COMENTARIO = document.getElementById('contenidoComentario'),
+    PUNTUACION_COMENTARIO = document.getElementById('puntuacionComentario'),
+    FECHA_COMENTARIO = document.getElementById('fechaComentario'),
+    MODELO_COMENTARIO = document.getElementById('modeloComentario'),
+    ESTADO_COMENTARIO = document.getElementById('estadoComentario');
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
     loadTemplate8();
@@ -36,11 +39,11 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se verifica la acción a realizar.
-    (ID_VALORACION.value) ? action = 'updateRow' : action = 'createRow';
+    (ID_COMENTARIO.value) ? action = 'updateRow' : action = 'createRow';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
-    const DATA = await fetchData(VALORACION_API, action, FORM);
+    const DATA = await fetchData(COMENTARIO_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
         // Se cierra la caja de diálogo.
@@ -66,7 +69,7 @@ const fillTable = async (form = null) => {
     // Se verifica la acción a realizar.
     (form) ? action = 'searchRows' : action = 'readAll';
     // Petición para obtener los registros disponibles.
-    const DATA = await fetchData(VALORACION_API, action, form);
+    const DATA = await fetchData(COMENTARIO_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
         // Se recorre el conjunto de registros fila por fila.
@@ -76,10 +79,9 @@ const fillTable = async (form = null) => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TABLE_BODY.innerHTML += `
                 <tr>
-                    <td>${row.nombre_cliente}</td>
-                    <td>${row.nombre_producto}</td>
-                    <td>${row.descripcion_comentario}</td>
-                    <td>${row.fecha_comentario}</td>
+                    <td>${row.cliente}</td>
+                    <td>${row.modelo}</td>
+                    <td>${row.puntuacion_comentario}</td>
                     <td><i class="${icon}"></i></td>
                     <td>
                         <button type="button" class="btn btn-info" onclick="openUpdate(${row.id_comentario})">
@@ -101,23 +103,35 @@ const fillTable = async (form = null) => {
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
+//Función asíncrona para preparar el formulario al momento de actualizar un registro.
 const openUpdate = async (id) => {
-    // Se define una constante tipo objeto con los datos del registro seleccionado.
+    // Se define un objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('idValoracion', id);
+    FORM.append('idComentario', id);
     // Petición para obtener los datos del registro solicitado.
-    const DATA = await fetchData(VALORACION_API, 'readOne', FORM);
+    const DATA = await fetchData(COMENTARIO_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
         // Se muestra la caja de diálogo con su título.
         SAVE_MODAL.show();
-        MODAL_TITLE.textContent = 'Actualizar valoracion';
         // Se prepara el formulario.
         SAVE_FORM.reset();
+        //INABILITARLOS
+        MODAL_TITLE.textContent = 'Actualizar comentario';
+        CLIENTE_COMENTARIO.disabled = true;
+        CONTENIDO_COMENTARIO.disabled = true;
+        PUNTUACION_COMENTARIO.disabled = true;
+        FECHA_COMENTARIO.disabled = true;
+        MODELO_COMENTARIO.disabled = true;
         // Se inicializan los campos con los datos.
         const ROW = DATA.dataset;
-        ID_VALORACION.value = ROW.id_comentario;
-        ESTADO_VALORACION.checked = ROW.estado_comentario;
+        ID_COMENTARIO.value = ROW.id_comentario;
+        CLIENTE_COMENTARIO.value = ROW.cliente;
+        CONTENIDO_COMENTARIO.value = ROW.contenido_comentario;
+        PUNTUACION_COMENTARIO.value = ROW.puntuacion_comentario;
+        FECHA_COMENTARIO.value = ROW.fecha_comentario;
+        MODELO_COMENTARIO.value = ROW.modelo;
+        ESTADO_COMENTARIO.checked = ROW.estado_comentario;
     } else {
         sweetAlert(2, DATA.error, false);
     }
