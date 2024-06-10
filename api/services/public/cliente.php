@@ -33,7 +33,6 @@ if (isset($_GET['action'])) {
                     !$cliente->setDireccion($_POST['direccionCliente']) or
                     !$cliente->setTelefono($_POST['telefonoCliente']) or
                     !$cliente->setCorreo($_POST['correoCliente']) or
-                    !$cliente->setDireccion($_POST['direccionCliente']) or
                     !$cliente->setClave($_POST['claveCliente'])
                 ) {
                     $result['error'] = $cliente->getDataError();
@@ -68,7 +67,9 @@ if (isset($_GET['action'])) {
                     !$cliente->setId($_POST['idCliente']) or
                     !$cliente->setNombre($_POST['nombreCliente']) or
                     !$cliente->setApellido($_POST['apellidoCliente']) or
-                    !$cliente->setTelefono($_POST['telefonoCliente'])
+                    !$cliente->setTelefono($_POST['telefonoCliente'])or
+                    !$cliente->setDireccion($_POST['direccionCliente']) or
+                    !$cliente->setCorreo($_POST['correoCliente']) 
                 ) {
                     $result['error'] = $cliente->getDataError();
                 } elseif ($cliente->updateRow()) {
@@ -107,13 +108,13 @@ if (isset($_GET['action'])) {
                 if (
                     !$cliente->setNombre($_POST['nombreCliente']) or
                     !$cliente->setApellido($_POST['apellidoCliente']) or
-                    !$cliente->setDireccion($_POST['direccionCliente']) or
+                    !$cliente->setDireccion($_POST['direccionCliente']) or   
                     !$cliente->setTelefono($_POST['telefonoCliente']) or
-                    !$cliente->setCorreo($_POST['correoCliente']) or
-                    !$cliente->setDireccion($_POST['direccionCliente']) 
+                    !$cliente->setCorreo($_POST['correoCliente'])
+                    
                 ) {
                     $result['error'] = $cliente->getDataError();
-                } elseif ($cliente ->editProfile()) {
+                } elseif ($cliente->editProfile()) {
                     $result['status'] = 1;
                     $result['message'] = 'Perfil modificado correctamente';
                     $_SESSION['correoCliente'] = $_POST['correoCliente'];

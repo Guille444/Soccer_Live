@@ -27,9 +27,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         const ROW = DATA.dataset;
         NOMBRE_CLIENTE.value = ROW.nombre_cliente;
         APELLIDO_CLIENTE.value = ROW.apellido_cliente;
+        DIRECCION_CLIENTE.value = ROW.direccion_cliente;
         TELEFONO_CLIENTE.value = ROW.telefono_cliente;
         CORREO_CLIENTE.value = ROW.correo_cliente;
-        DIRECCION_CLIENTE.value = ROW.direccion_cliente;
     } else {
         sweetAlert(2, DATA.error, null);
     }
