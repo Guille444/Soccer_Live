@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Metadatos de la página web -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- IMPORTACIÓN DE RECURSOS EXTERNOS -->
+    <link rel="stylesheet" href="../../resources/css/public/historial.css">
+    <link href="../../resources/css/public/stars.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="../../resources/css/bootstrap-icons.min.css">
+    <!-- Título del documento -->
+    <title>Inicio</title>
+</head>
+
+<body>
+    <!-- Contenido principal del documento -->
+    <main>
+        <div id="contenido">
+            <!-- Contnido de la sección del documento -->
+            <section id="hero" class="d-flex align-items-center">
+                <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-7 col-lg-9 text-center">
+                            <h1 id="text">Historial de compras</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="col-sm-4">
+                <form id="searchForm">
+                    <div class="input-group rounded">
+                        <input id="inputsearch" type="search" class="form-control rounded" placeholder="Buscar" aria-label="Buscar"
+                            aria-describedby="search-addon" name="search"/>
+                        <button type="submit" class="btn btn-info">
+                            <i class="bi bi-search"></i>
+                        </button>
+                        <button type="reset" class="btn btn-secondary" onclick="fillTable()">
+                            <i class="bi bi-x-square-fill"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="tableBody" class="row"></div>
+
+            <!-- Componente Modal  -->
+            <div class="modal fade" id="saveModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="modalTitle" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content ">
+                        <div class="modal-header">
+                            <!-- Título del modal -->
+                            <h1 class="modal-title fs-5" id="modalTitle"></h1>
+                        </div>
+                        <!-- Formulario para crear o actualizar un registro -->
+                        <form id="saveForm">
+                            <div class="modal-body row gx-5">
+                                <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                                <input type="hidden" id="idDetalle" name="idDetalle">
+
+                                <div class="col-sm-12 col-md-12">
+                                    <label for="contenidoComentario" class="form-label">Mensaje</label>
+                                    <textarea id="contenidoComentario" name="contenidoComentario" class="form-control"
+                                        rows="6"></textarea>
+                                </div>
+                                <div class="col-12 mt-4 mb-2 text-center">
+                                    <label for="puntuacionComentario" class="form-label">Puntuación</label>
+                                </div>
+                                <div class="col-12 mt-1 mb-3 d-flex justify-content-center" id="divstars">
+
+                                </div>
+                                <div class="col-sm-12 col-md-6" id="fechaDiv">
+                                    <label for="fechaComentario" class="form-label">Fecha</label>
+                                    <input id="fechaComentario" type="text" name="fechaComentario" class="form-control">
+                                </div>
+
+                            </div>
+                            <div class="modal-footer justify-content-center">
+                                <button id="idGuardar" type="submit" class="btn"><img src="../../resources/imgs/save.png" alt=""
+                                        height="40px" width="40px"></button>
+                                <button type="button" class="btn" data-bs-dismiss="modal"><img
+                                        src="../../resources/imgs/close.png" alt="" height="40px" width="40px"></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </main>
+
+    <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
+    <!-- Llamada al controlador general de la aplicación -->
+    <script type="text/javascript" src="../../controllers/utils/components.js"></script>
+    <!-- Llamada al controlador del sitio privado -->
+    <script type="text/javascript" src="../../controllers/utils/public.js"></script>
+    <!-- Llamada al controlador de la página web -->
+    <script type="text/javascript" src="../../controllers/public/historial.js"></script>
+</body>
+
+</html>

@@ -96,7 +96,7 @@ class ComentarioHandler
     public function readByIdDetalle()
     {
         $sql = 'select id_producto,id_comentario,id_detalle,CONCAT(nombre_cliente," ",apellido_cliente) as cliente,
-        CONCAT(descripcion_marca," ",nombre_producto) as modelo,contenido_comentario,
+        CONCAT(nombre_producto) as modelo,contenido_comentario,
         puntuacion_comentario,estado_comentario,
         DATE_FORMAT(fecha_comentario, "%d-%m-%Y - %h:%i %p") AS fecha_comentario
         from comentarios 
@@ -114,7 +114,7 @@ class ComentarioHandler
     public function readByIdComentario()
     {
         $sql = 'select id_producto,id_comentario,id_detalle,CONCAT(nombre_cliente," ",apellido_cliente) as cliente,
-        CONCAT(descripcion_marca," ",nombre_producto) as modelo,contenido_comentario,
+        CONCAT(nombre_marca," ",nombre_producto) as modelo,contenido_comentario,
         puntuacion_comentario,estado_comentario,
         DATE_FORMAT(fecha_comentario, "%d-%m-%Y - %h:%i %p") AS fecha_comentario
         from comentarios 
@@ -123,7 +123,7 @@ class ComentarioHandler
         INNER JOIN clientes c USING(id_cliente)
         INNER JOIN productos mo USING (id_producto)
         INNER JOIN marcas ma USING (id_marca)
-        WHERE id_comentario = ? ';
+        WHERE id_comentario = ?';
         //echo $this->idProducto. ' que';
         $params = array($this->id);
 

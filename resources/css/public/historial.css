@@ -1,0 +1,87 @@
+/*color a letra del menú de navegación*/
+#historial {
+    color: #A8E910;
+}
+
+#fondo {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+body {
+    background-image: linear-gradient(to right, #14A4EE, #126BA8, #0C3A6B, #081F49);
+}
+
+#footerColor {
+    background: #458CC6;
+    color: #fff;
+}
+
+/*espacio para la divicion de la secion*/
+section {
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+/*estilo y color a la letra*/
+#text {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #FFFFFF;
+}
+
+#rowsFound {
+    background-color: #0C3A6B;
+    color: white;
+}
+
+main {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/*contenedor para boton asignar, imagen y la tabla de dministracion de clientes*/
+.container-xl {
+    padding: 50px;
+    border-radius: 10px;
+}
+
+/*estilo y color de tabla administracion de empleados*/
+#tabla {
+    background-color: #0C3A6B;
+    color: #FFFFFF;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/*espacio a la imagen*/
+#icon {
+    padding: 10px;
+}
+
+#identify {
+    background-color: #0C3A6B;
+}
+
+#boton {
+    background-color: #0C3A6B;
+}
+
+#table {
+    background-color: #0C3A6B;
+    color: #FFFFFF;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#padding {
+    padding: 10px;
+}
+
+#row {
+    padding: 10px;
+}
+
+#search-addon {
+    background-color: #0C3A6B;
+}
+
+.table-responsive {
+    padding: 20px;
+}
