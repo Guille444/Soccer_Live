@@ -4,6 +4,7 @@ const PERFIL_FORM = document.getElementById('perfilForm'),
     APELLIDO_CLIENTE = document.getElementById('apellidoCliente'),
     TELEFONO_CLIENTE = document.getElementById('telefonoCliente'),
     CORREO_CLIENTE = document.getElementById('correoCliente');
+    DIRECCION_CLIENTE = document.getElementById('direccionCliente');
 const PASSWORD_MODAL = new bootstrap.Modal('#passwordModal');
 // Constante para establecer el formulario de cambiar contraseña.
 const PASSWORD_FORM = document.getElementById('passwordForm');
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         APELLIDO_CLIENTE.value = ROW.apellido_cliente;
         TELEFONO_CLIENTE.value = ROW.telefono_cliente;
         CORREO_CLIENTE.value = ROW.correo_cliente;
+        DIRECCION_CLIENTE.value = ROW.direccion_cliente;
     } else {
         sweetAlert(2, DATA.error, null);
     }
