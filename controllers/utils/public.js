@@ -363,8 +363,8 @@ const loadTemplate4 = async () => {
                                     <li class="nav-item">
                                         <div class="navbar-nav ms-auto">
                                         <a class="nav-link" href="index.html"><i class="bi bi-shop"></i> CATÁLAGO</a>
-                                            <a class="nav-link" href="carrito.html" id="carrito"><i class="bi bi-cart" id="info1"></i> CARRITO</a>
-                                            <a class="nav-link" href="perfil.html"><i class="bi bi-person-fill"></i> PERFIL </a>
+                                            <a class="nav-link" href="carrito.html"><i class="bi bi-cart" id="info1"></i> CARRITO</a>
+                                            <a class="nav-link" href="perfil.html" id="perfil"><i class="bi bi-person-fill"></i> PERFIL </a>
                                             <a class="nav-link" href="#" onclick="logOut()"><i class="bi bi-box-arrow-left"></i> CERRAR SESIÓN</a>
                                         </div>
                                     </li>
