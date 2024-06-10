@@ -24,25 +24,6 @@ class ClienteHandler
 
 
     /*
-      
-
-
-     public function checkUser($username, $password)
-    {
-        $sql = 'SELECT id_cliente, correo_cliente, clave_cliente, estado_cliente
-        FROM clientes
-        WHERE correo_cliente = ?';
-        $params = array($username);
-        $data = Database::getRow($sql, $params);
-        if ($data && password_verify($password, $data['clave_empleado'])) {
-            $_SESSION['idCliente'] = $data['id_cliente'];
-            $_SESSION['correoCliente'] = $data['correo_cliente'];
-            return true;
-        } else {
-            return false;
-        }
-    }
-    */
 
    public function checkUser($username, $password)
     {
