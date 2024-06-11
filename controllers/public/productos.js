@@ -30,8 +30,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <h5 class="card-title text-center">${row.nombre_producto}</h5>
                         </div>
                         <ul class="list-group list-group-flush" id="lista">
-                            <li class="list-group-item"id="lista">Precio unitario (US$): ${row.precio_producto}</li>
-                            <li class="list-group-item"id="lista">Existencias: ${row.existencias_producto}</li>
+                            <li class="list-group-item"id="lista"><b>Marca:</b> ${row.nombre_marca}</li>
+                            <li class="list-group-item"id="lista"><b>Precio unitario (US$):</b> ${row.precio_producto}</li>
+                            <li class="list-group-item"id="lista"><b>Existencias:</b> ${row.existencias_producto}</li>
                         </ul>
                         <div class="card-body text-center" >
                             <a href="detalle.html?id=${row.id_producto}" class="btn btn-primary" id="verDetalle">Ver detalle</a>

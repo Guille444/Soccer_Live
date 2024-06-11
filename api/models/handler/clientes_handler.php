@@ -22,9 +22,6 @@ class ClienteHandler
     *   Métodos para gestionar la cuenta del cliente.
     */
 
-
-    /*
-
    public function checkUser($username, $password)
     {
         $sql = 'SELECT id_cliente, correo_cliente, clave_cliente, estado_cliente

@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('idProducto').value = DATA.dataset.id_producto;
 
         BTNCOMENTARIO.innerHTML =
-            `<button type="button" class="btn btn-warning" onclick="openComentario(${PARAMS.get('id')})">
+            `<button style="color: white;" type="button" class="btn btn-info" onclick="openComentario(${PARAMS.get('id')})">
             <i class="bi bi-chat-dots"></i> Comentarios
         </button> `;
     } else {

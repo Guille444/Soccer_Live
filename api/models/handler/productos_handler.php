@@ -93,9 +93,10 @@ class ProductoHandler
 
     public function readProductosCategoria()
     {
-        $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, existencias_producto
+        $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, existencias_producto, nombre_categoria, nombre_marca
                 FROM productos
                 INNER JOIN categorias USING(id_categoria)
+                INNER JOIN marcas USING(id_marca)
                 WHERE id_categoria = ? AND estado_producto = true
                 ORDER BY nombre_producto';
         $params = array($this->categoria);
