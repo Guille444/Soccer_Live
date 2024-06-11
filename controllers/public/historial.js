@@ -103,8 +103,8 @@ async function readDetail() {
             }
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TABLE_BODY.innerHTML += `
-                    <div class="card mb-3 col-6 mt-4" id="detalle" style="background-color: #F1EFEF;">
-                        <div class="row g-0" style="background-color: #F1EFEF;">
+                    <div class="card mb-3 col-5 mt-4 mx-2 d-flex justify-content-center" id="detalle">
+                        <div class="row g-0">
                             <div class="col-lg-5 col-md-12 col-sm-12">
                                 <img height="80px" width="70%" src="${SERVER_URL}images/productos/${row.imagen_producto}"
                                     class="img-fluid rounded" alt="">
@@ -119,11 +119,6 @@ async function readDetail() {
                                         <div class="col-lg-6 col-md-12">
                                             <p class="card-text" style="font-size: 20px;">
                                                 <strong>Marca:</strong> ${row.nombre_marca}<br>
-                                            </p>
-                                        </div>
-                                        <div class="col-6">
-                                            <p class="card-text" style="font-size: 20px;">
-                                                <strong>Precio:</strong> $${row.precio_producto}<br>
                                             </p>
                                         </div>
                                         <div class="col-6">

@@ -8,7 +8,7 @@ const USER_API = 'services/public/cliente.php';
 // Constante para establecer el elemento del contenido principal.
 const MAIN = document.querySelector('main');
 MAIN.style.paddingTop = '0px';
-MAIN.style.paddingBottom = '0px';
+MAIN.style.paddingBottom = '75px';
 MAIN.classList.add('container');
 // Se establece el título de la página web.
 // document.querySelector('title').textContent = 'CoffeeShop - Store';

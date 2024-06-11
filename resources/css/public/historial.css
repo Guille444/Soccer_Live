@@ -85,3 +85,16 @@ main {
 .table-responsive {
     padding: 20px;
 }
+
+#detalle{
+    background-color: #064168;
+    color: white;
+    border-color: #458CC6;
+    border-radius: 25px;
+    border: 5px solid #458CC6;
+}
+
+.btn3{
+    background-color: #458CC6;
+    color: white;
+}
