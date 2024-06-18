@@ -129,17 +129,14 @@ ADD CONSTRAINT chk_precio_unitario_positivo CHECK (precio_producto > 0);
 
 CREATE TABLE comentarios(
 id_comentario INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-descripcion_comentario VARCHAR(250) NOT NULL,
+contenido_comentario VARCHAR(250) NOT NULL,
+puntuacion_comentario INT UNSIGNED NOT NULL,
 fecha_comentario DATE DEFAULT current_timestamp(),
 estado_comentario BOOLEAN NOT NULL,
-id_cliente INT NOT NULL,
-CONSTRAINT fk_valoracion_cliente
-FOREIGN KEY (id_cliente)
-REFERENCES clientes (id_cliente),
-id_producto INT NOT NULL,
-CONSTRAINT fk_valoracion_producto
-FOREIGN KEY (id_producto)
-REFERENCES productos (id_producto)
+id_detalle INT NOT NULL,
+CONSTRAINT fk_comentario_detalle
+FOREIGN KEY (id_detalle)
+REFERENCES detalle_pedidos (id_detalle)
 );
-
+        
 DESCRIBE comentarios;
