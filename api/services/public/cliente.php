@@ -159,7 +159,6 @@ if (isset($_GET['action'])) {
                     !$cliente->setDireccion($_POST['direccionCliente']) or
                     !$cliente->setTelefono($_POST['telefonoCliente']) or
                     !$cliente->setCorreo($_POST['correoCliente']) or
-                    !$cliente->setDireccion($_POST['direccionCliente']) or
                     !$cliente->setClave($_POST['claveCliente'])
                 ) {
                     $result['error'] = $cliente->getDataError();
@@ -168,7 +167,7 @@ if (isset($_GET['action'])) {
                 } elseif ($cliente->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Cuenta registrada correctamente';
-                } else {
+                } else { 
                     $result['error'] = 'Ocurrió un problema al registrar la cuenta';
                 }
                 break;

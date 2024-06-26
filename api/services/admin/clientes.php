@@ -53,7 +53,7 @@ if (isset($_GET['action'])) {
                     !$cliente->setEstado(isset($_POST['estadoCliente']) ? 1 : 0)
                 ) {
                     $result['error'] = $cliente->getDataError();
-                } elseif ($cliente->updateRow()) {
+                } elseif ($cliente->changeStatus()) {
                     $result['status'] = 1;
                     $result['message'] = 'Cliente modificado correctamente';
                 } else {
