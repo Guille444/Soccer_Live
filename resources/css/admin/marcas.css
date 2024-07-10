@@ -21,6 +21,14 @@ section {
     border-radius: 10px;
 }
 
+#btn_editar {
+    color: #081F49;
+}
+
+#btn_delete {
+    color: red;
+}
+
 main {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -31,7 +39,7 @@ main {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-#rowsFound{
+#rowsFound {
     background-color: #0C3A6B;
     color: white;
 }

@@ -78,3 +78,20 @@ h1 {
     border: none;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+.button-agregar2 {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #FEAF00;
+    color: white;
+    border: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#btn_editar{
+    color: #081F49;
+}
+
+#btn_delete{
+    color: red;
+}

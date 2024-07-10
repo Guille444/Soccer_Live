@@ -130,8 +130,8 @@ class ProductoHandler
     public function productosCategoria()
     {
         $sql = 'SELECT nombre_producto, precio_producto, estado_producto
-                FROM producto
-                INNER JOIN categoria USING(id_categoria)
+                FROM productos
+                INNER JOIN categorias USING(id_categoria)
                 WHERE id_categoria = ?
                 ORDER BY nombre_producto';
         $params = array($this->categoria);

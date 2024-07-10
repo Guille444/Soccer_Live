@@ -84,7 +84,7 @@ const fillTable = async (form = null) => {
                     <td>${row.puntuacion_comentario}</td>
                     <td><i class="${icon}"></i></td>
                     <td>
-                        <button type="button" class="btn btn-info" onclick="openUpdate(${row.id_comentario})">
+                        <button id="btn_editar" type="button" class="btn" onclick="openUpdate(${row.id_comentario})">
                             <i class="bi bi-pencil-fill"></i>
                         </button>
                     </td>

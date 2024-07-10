@@ -13,6 +13,14 @@ section {
     overflow: hidden;
 }
 
+#btn_editar{
+    color: #081F49;
+}
+
+#btn_delete{
+    color: red;
+}
+
 /*estilo y color a la letra*/
 #text {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;

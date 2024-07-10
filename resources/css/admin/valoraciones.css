@@ -24,7 +24,15 @@ section {
     color: #FFFFFF;
 }
 
-#rowsFound{
+#btn_editar {
+    color: #081F49;
+}
+
+#btn_delete {
+    color: red;
+}
+
+#rowsFound {
     background-color: #0C3A6B;
     color: white;
 }
@@ -77,6 +85,6 @@ main {
     background-color: #0C3A6B;
 }
 
-.table-responsive{
+.table-responsive {
     padding: 20px;
 }

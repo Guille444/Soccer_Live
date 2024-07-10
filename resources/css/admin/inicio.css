@@ -27,3 +27,18 @@ main {
     color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+.chart-container {
+    width: 100%;
+    max-width: 600px;
+    /* Ajusta según tus necesidades */
+    height: 400px;
+    /* Ajusta según tus necesidades */
+    margin: auto;
+}
+
+#chart1,
+#chart2 {
+    width: 100%;
+    height: 100%;
+}
