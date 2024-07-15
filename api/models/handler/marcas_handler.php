@@ -98,4 +98,17 @@ class MarcaHandler
         $params = array($value);
         return Database::getRow($sql, $params);
     }
+
+    public function readTopProductos()
+    {
+        $sql = 'SELECT nombre_producto, SUM(cantidad_producto) total
+                FROM detalle_pedido
+                INNER JOIN producto USING(id_producto)
+                WHERE id_categoria = ?
+                GROUP BY nombre_producto
+                ORDER BY total DESC
+                LIMIT 5';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
+    }
 }

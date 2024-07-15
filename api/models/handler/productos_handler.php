@@ -137,4 +137,48 @@ class ProductoHandler
         $params = array($this->categoria);
         return Database::getRows($sql, $params);
     }
+
+    public function productosMarca()
+    {
+        $sql = 'SELECT nombre_producto, precio_producto, estado_producto
+                FROM productos
+                INNER JOIN marcas USING(id_marca)
+                WHERE id_marca = ?
+                ORDER BY nombre_producto';
+        $params = array($this->marca);
+        return Database::getRows($sql, $params);
+    }
+
+    public function readProductosMarca()
+    {
+        $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, existencias_producto, nombre_categoria, nombre_marca
+                FROM productos
+                INNER JOIN categorias USING(id_categoria)
+                INNER JOIN marcas USING(id_marca)
+                WHERE id_marca = ? AND estado_producto = true
+                ORDER BY nombre_producto';
+        $params = array($this->marca);
+        return Database::getRows($sql, $params);
+    }
+
+    /*
+    *   Métodos para generar gráficos.
+    */
+    public function cantidadProductosMarca()
+    {
+        $sql = 'SELECT nombre_marca, COUNT(id_marca) cantidad
+                FROM productos
+                INNER JOIN marcas USING(id_marca)
+                GROUP BY nombre_marca ORDER BY cantidad DESC LIMIT 5';
+        return Database::getRows($sql);
+    }
+
+    public function porcentajeProductosMarcas()
+    {
+        $sql = 'SELECT nombre_marca, ROUND((COUNT(id_producto) * 100.0 / (SELECT COUNT(id_producto) FROM productos)), 2) porcentaje
+                FROM productos
+                INNER JOIN marcas USING(id_marca)
+                GROUP BY nombre_marca ORDER BY porcentaje DESC';
+        return Database::getRows($sql);
+    }
 }
