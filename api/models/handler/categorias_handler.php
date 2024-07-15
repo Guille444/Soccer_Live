@@ -90,4 +90,18 @@ class CategoriaHandler
         $params = array($value);
         return Database::getRow($sql, $params);
     }
+
+    // Método para gráficar el top 5 de productos más vendidos de una categoría.
+    public function readTopProductos()
+    {
+        $sql = 'SELECT nombre_producto, SUM(cantidad_producto) total
+                FROM detalle_pedidos
+                INNER JOIN productos USING(id_producto)
+                WHERE id_categoria = ?
+                GROUP BY nombre_producto
+                ORDER BY total DESC
+                LIMIT 5';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
+    }
 }

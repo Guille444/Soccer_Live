@@ -166,4 +166,6 @@ class ClienteHandler
         $params = array($value);
         return Database::getRow($sql, $params);
     }
+
+    
 }
