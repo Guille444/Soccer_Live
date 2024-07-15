@@ -89,6 +89,9 @@ const fillTable = async (form = null) => {
                         <button type="button" class="btn" onclick="openChart(${row.id_categoria})">
                             <i class="bi bi-bar-chart-line-fill"></i>
                         </button>
+                        <button type="button" class="btn" onclick="openReport(${row.id_categoria})">
+                            <i class="bi bi-file-earmark-pdf-fill"></i>
+                        </button>
                     </td>
                 </tr>
             `;
@@ -213,3 +216,4 @@ const openChart = async (id) => {
         sweetAlert(4, DATA.error, true);
     }
 }
+
