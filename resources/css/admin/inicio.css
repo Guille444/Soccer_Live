@@ -5,20 +5,20 @@
 body {
     background-image: linear-gradient(to right, #14A4EE, #126BA8, #0C3A6B, #081F49) !important;
     background-color: transparent !important;
-    /* Asegúrate de que no haya color de fondo */
     margin: 0;
     padding: 0;
     height: 100vh;
-    /* Asegúrate de que el body ocupe toda la altura de la ventana */
-    overflow: hidden;
+    overflow: auto; /* Permitir desplazamiento */
 }
 
 main {
     background-color: transparent !important;
+    padding: 20px; /* Agregar padding para separación */
 }
 
 #chart1,
-#chart2 {
+#chart2,
+#chart3 {
     background-color: transparent !important;
     border: none !important;
 }
@@ -26,24 +26,70 @@ main {
 #mainTitle {
     color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 20px 0;
+}
+
+h4 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    color: white; /* Asegurar que el texto del título sea blanco */
 }
 
 .chart-container {
     width: 100%;
     max-width: 600px;
-    /* Ajusta según tus necesidades */
     height: 400px;
-    /* Ajusta según tus necesidades */
     margin: auto;
 }
 
-#chart1,
-#chart2 {
-    width: 100%;
-    height: 100%;
+#charts {
+    padding-top: 50px;
 }
 
+.dashboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
 
-#charts{
-    padding-top: 50px;
+.dashboard-item {
+    background-color: #081F49; /* Fondo blanco de cada gráfica */
+    border-radius: 8px;
+    padding: 20px;
+    color: white; /* Asegurar que el texto sea blanco */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.dashboard-item h4 {
+    margin-bottom: 20px;
+    color: white; /* Asegurar que el texto del título sea blanco */
+}
+
+.canvas-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.canvas-container canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.row-charts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.col-chart {
+    flex: 0 0 calc(50% - 40px);
+    max-width: calc(50% - 40px);
+    margin: 20px;
 }

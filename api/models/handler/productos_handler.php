@@ -32,9 +32,9 @@ class ProductoHandler
                 FROM productos
                 INNER JOIN categorias USING(id_categoria)
                 INNER JOIN marcas USING(id_marca)
-                WHERE nombre_producto LIKE ? OR descripcion_producto LIKE ?
+                WHERE nombre_producto LIKE ?
                 ORDER BY nombre_producto';
-        $params = array($value, $value);
+        $params = array($value);
         return Database::getRows($sql, $params);
     }
 

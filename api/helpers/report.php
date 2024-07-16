@@ -49,21 +49,32 @@ class Report extends FPDF
         return mb_convert_encoding($string, 'ISO-8859-1', 'utf-8');
     }
 
+    // Function to add background image
+    function addBackground()
+    {
+        // Get the width and height of the page
+        $this->Image('../../images/fondo.png', 0, 0, $this->GetPageWidth(), $this->GetPageHeight());
+    }
+
     /*
     *   Se sobrescribe el método de la librería para establecer la plantilla del encabezado de los reportes.
     *   Se llama automáticamente en el método addPage()
     */
     public function header()
     {
+        // Add the background image
+        $this->addBackground();
+        // Set text color to white
+        $this->SetTextColor(255, 255, 255);
         // Se establece el logo.
-        $this->image('../../images/logo.png', 15, 15, 40);
+        $this->image('../../images/logo.png', 15, 18, 50);
         // Se ubica el título.
         $this->cell(20);
-        $this->setFont('Arial', 'B', 15);
+        $this->setFont('Helvetica', 'B', 15);
         $this->cell(166, 10, $this->encodeString($this->title), 0, 1, 'C');
         // Se ubica la fecha y hora del servidor.
         $this->cell(20);
-        $this->setFont('Arial', '', 10);
+        $this->setFont('Helvetica', 'B', 10);
         $this->cell(166, 10, 'Fecha/Hora: ' . date('d-m-Y H:i:s'), 0, 1, 'C');
         // Se agrega un salto de línea para mostrar el contenido principal del documento.
         $this->ln(10);
@@ -77,8 +88,10 @@ class Report extends FPDF
     {
         // Se establece la posición para el número de página (a 15 milímetros del final).
         $this->setY(-15);
+        // Set text color to white
+        $this->SetTextColor(255, 255, 255);
         // Se establece la fuente para el número de página.
-        $this->setFont('Arial', 'I', 8);
+        $this->setFont('Helvetica', 'I', 8);
         // Se imprime una celda con el número de página.
         $this->cell(0, 10, $this->encodeString('Página ') . $this->pageNo() . '/{nb}', 0, 0, 'C');
     }

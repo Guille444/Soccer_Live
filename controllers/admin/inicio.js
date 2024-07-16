@@ -46,7 +46,7 @@ const graficoBarrasCategorias = async () => {
             cantidades.push(row.cantidad);
         });
         // Llamada a la función para generar y mostrar un gráfico de barras. Se encuentra en el archivo components.js
-        barGraph('chart1', categorias, cantidades, 'Cantidad de productos', 'Cantidad de productos por categoría');
+        barGraph('chart1', categorias, cantidades);
     } else {
         document.getElementById('chart1').remove();
         console.log(DATA.error);
@@ -76,7 +76,7 @@ const graficoPastelCategorias = async () => {
             porcentajes.push(row.porcentaje);
         });
         // Llamada a la función para generar y mostrar un gráfico de pastel. Se encuentra en el archivo components.js
-        pieGraph('chart2', categorias, porcentajes, 'Porcentaje de productos por categoría');
+        pieGraph('chart2', categorias, porcentajes);
     } else {
         document.getElementById('chart2').remove();
         console.log(DATA.error);
@@ -103,7 +103,7 @@ const graficoPastelMarcas = async () => {
             porcentajes.push(row.porcentaje);
         });
         // Llamada a la función para generar y mostrar un gráfico de pastel. Se encuentra en el archivo components.js
-        pieGraph('chart3', marcas, porcentajes, 'Porcentaje de productos por Marca');
+        pieGraph('chart3', marcas, porcentajes);
     } else {
         document.getElementById('chart3').remove();
         console.log(DATA.error);

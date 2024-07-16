@@ -90,9 +90,9 @@ class EmpleadoHandler
         $value = '%' . Validator::getSearchValue() . '%';
         $sql = 'SELECT id_empleado, nombre_empleado, apellido_empleado, telefono_empleado, dui_empleado, correo_empleado, clave_empleado
                 FROM empleados
-                WHERE apellido_empleado LIKE ? OR nombre_empleado LIKE ?
+                WHERE apellido_empleado LIKE ?
                 ORDER BY apellido_empleado';
-        $params = array($value, $value);
+        $params = array($value);
         return Database::getRows($sql, $params);
     }
 

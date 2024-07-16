@@ -11,39 +11,46 @@ $pdf = new Report;
 $pdf->startReport('Productos por categoría');
 // Se instancia el módelo Categoría para obtener los datos.
 $categoria = new CategoriaData;
+
 // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
 if ($dataCategorias = $categoria->readAll()) {
-    // Se establece un color de relleno para los encabezados.
-    $pdf->setFillColor(200);
-    // Se establece la fuente para los encabezados.
+    // Establecer color de fondo del encabezado a #081F49
+    $pdf->setFillColor(8, 31, 73);
+    // Establecer color de los bordes de la tabla a blanco
+    $pdf->setDrawColor(255, 255, 255);
+    // Establecer color del texto del encabezado a blanco
+    $pdf->setTextColor(255, 255, 255);
+    // Establecer la fuente para los encabezados
     $pdf->setFont('Arial', 'B', 11);
-    // Se imprimen las celdas con los encabezados.
+    // Imprimir las celdas con los encabezados
     $pdf->cell(126, 10, 'Nombre', 1, 0, 'C', 1);
     $pdf->cell(30, 10, 'Precio (US$)', 1, 0, 'C', 1);
     $pdf->cell(30, 10, 'Estado', 1, 1, 'C', 1);
 
-    // Se establece un color de relleno para mostrar el nombre de la categoría.
-    $pdf->setFillColor(240);
-    // Se establece la fuente para los datos de los productos.
-    $pdf->setFont('Arial', '', 11);
-
-    // Se recorren los registros fila por fila.
+    // Recorrer los registros fila por fila
     foreach ($dataCategorias as $rowCategoria) {
-        // Se imprime una celda con el nombre de la categoría.
+        // Establecer color de fondo para el nombre de la categoría a blanco
+        $pdf->setFillColor(255);
+        // Restablecer el color del texto a negro para el nombre de la categoría
+        $pdf->setTextColor(0, 0, 0);
+        // Imprimir una celda con el nombre de la categoría
         $pdf->cell(0, 10, $pdf->encodeString('Categoría: ' . $rowCategoria['nombre_categoria']), 1, 1, 'C', 1);
-        // Se instancia el módelo Producto para procesar los datos.
+        
+        // Instanciar el módelo Producto para procesar los datos
         $producto = new ProductoData;
-        // Se establece la categoría para obtener sus productos, de lo contrario se imprime un mensaje de error.
+        // Establecer la categoría para obtener sus productos, de lo contrario imprimir un mensaje de error
         if ($producto->setCategoria($rowCategoria['id_categoria'])) {
-            // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
+            // Verificar si existen registros para mostrar, de lo contrario imprimir un mensaje
             if ($dataProductos = $producto->productosCategoria()) {
-                // Se recorren los registros fila por fila.
+                // Establecer color de fondo para las filas de productos a gris claro
+                $pdf->setFillColor(224, 224, 224);
+                // Recorrer los registros fila por fila
                 foreach ($dataProductos as $rowProducto) {
                     ($rowProducto['estado_producto']) ? $estado = 'Activo' : $estado = 'Inactivo';
-                    // Se imprimen las celdas con los datos de los productos.
-                    $pdf->cell(126, 10, $pdf->encodeString($rowProducto['nombre_producto']), 1, 0);
-                    $pdf->cell(30, 10, $rowProducto['precio_producto'], 1, 0);
-                    $pdf->cell(30, 10, $estado, 1, 1);
+                    // Imprimir las celdas con los datos de los productos
+                    $pdf->cell(126, 10, $pdf->encodeString($rowProducto['nombre_producto']), 1, 0, 'C', 1);
+                    $pdf->cell(30, 10, $rowProducto['precio_producto'], 1, 0, 'C', 1);
+                    $pdf->cell(30, 10, $estado, 1, 1, 'C', 1);
                 }
             } else {
                 $pdf->cell(0, 10, $pdf->encodeString('No hay productos para la categoría'), 1, 1);
