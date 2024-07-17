@@ -33,17 +33,17 @@ if (isset($_GET['action'])) {
                     !$empleado->setTelefono($_POST['telefonoEmpleado']) or
                     !$empleado->setDui($_POST['duiEmpleado']) or
                     !$empleado->setCorreo($_POST['correoEmpleado']) or
-                    !$empleado->setClave($_POST['claveEmpleado']) 
+                    !$empleado->setClave($_POST['claveEmpleado'])
                 ) {
-                        $result['error'] = $empleado->getDataError();
-                    } elseif ($_POST['claveEmpleado'] != $_POST['confirmarClave']) {
-                        $result['error'] = 'Contraseñas diferentes';
-                    } elseif ($empleado->createRow()) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Empleado creado correctamente';
-                    } else {
-                        $result['error'] = 'Ocurrió un problema al crear el administrador';
-                    }
+                    $result['error'] = $empleado->getDataError();
+                } elseif ($_POST['claveEmpleado'] != $_POST['confirmarClave']) {
+                    $result['error'] = 'Contraseñas diferentes';
+                } elseif ($empleado->createRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Empleado creado correctamente';
+                } else {
+                    $result['error'] = 'Ocurrió un problema al crear el administrador';
+                }
                 break;
             case 'readAll':
                 if ($result['dataset'] = $empleado->readAll()) {
@@ -173,6 +173,8 @@ if (isset($_GET['action'])) {
                     $result['error'] = $empleado->getDataError();
                 } elseif ($_POST['claveEmpleado'] != $_POST['confirmarClave']) {
                     $result['error'] = 'Contraseñas diferentes';
+                } elseif ($empleado->readAll()) {
+                    $result['error'] = 'Ya hay un empleado creado';
                 } elseif ($empleado->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Empleado registrado correctamente';
