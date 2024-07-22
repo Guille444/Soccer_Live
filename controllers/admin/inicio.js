@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     graficoPastelCategorias();
     graficoPastelMarcas();
     graficoBarrasMarcas();
+    graficoGanancias();
+
 });
 
 /*
