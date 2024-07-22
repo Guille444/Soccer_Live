@@ -17,6 +17,10 @@ section {
     color: #081F49;
 }
 
+#btn_report{
+    color: #FEAF00;
+}
+
 #btn_delete{
     color: red;
 }

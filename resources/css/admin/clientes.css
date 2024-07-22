@@ -1,60 +1,39 @@
-/*color a letra del menú de navegación*/
 #clientes {
     color: #A8E910;
-}
-
-#fondo {
-    background-color: transparent !important;
-    border-color: transparent !important;
 }
 
 body {
     background-image: linear-gradient(to right, #14A4EE, #126BA8, #0C3A6B, #081F49);
 }
 
-/*espacio para la divicion de la secion*/
-section {
-    padding: 80px 0;
-    overflow: hidden;
-}
-
-#btn_editar {
-    color: #081F49;
-}
-
-#btn_delete {
-    color: red;
-}
-
-/*estilo y color a la letra*/
-#text {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: #FFFFFF;
-}
-
-#rowsFound {
+#boton {
     background-color: #0C3A6B;
-    color: white;
+}
+
+section {
+    padding: 80px;
+    overflow: hidden;
 }
 
 main {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-/*contenedor para boton asignar, imagen y la tabla de dministracion de clientes*/
-.container-xl {
-    padding: 50px;
-    border-radius: 10px;
+#text {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #FFFFFF;
 }
 
-/*estilo y color de tabla administracion de empleados*/
+.container-xl {
+    padding: 50px;
+}
+
 #tabla {
     background-color: #0C3A6B;
     color: #FFFFFF;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-/*espacio a la imagen*/
 #icon {
     padding: 10px;
 }
@@ -63,8 +42,13 @@ main {
     background-color: #0C3A6B;
 }
 
-#boton {
-    background-color: #0C3A6B;
+h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#modal-fondo {
+    color: #000000;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 #table {
@@ -77,14 +61,37 @@ main {
     padding: 10px;
 }
 
-#row {
-    padding: 10px;
+#rowsFound {
+    background-color: #0C3A6B;
+    color: white;
 }
 
 #search-addon {
     background-color: #0C3A6B;
 }
 
-.table-responsive {
-    padding: 20px;
+.button-agregar {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #458CC6;
+    color: white;
+    border: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.button-agregar2 {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #FEAF00;
+    color: white;
+    border: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#btn_editar{
+    color: #081F49;
+}
+
+#btn_delete{
+    color: red;
 }

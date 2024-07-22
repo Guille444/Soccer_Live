@@ -56,6 +56,13 @@ class ProductoHandler
         return Database::getRows($sql);
     }
 
+    public function readAll2()
+    {
+        $sql = 'SELECT nombre_producto, descripcion_producto, precio_producto, existencias_producto, estado_producto FROM productos';
+        return Database::getRows($sql);
+    }
+
+
     public function readOne()
     {
         $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, existencias_producto, imagen_producto, id_categoria, id_marca, estado_producto

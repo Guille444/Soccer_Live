@@ -85,6 +85,9 @@ const fillTable = async (form = null) => {
                         <button id="btn_delete" type="button" class="btn" onclick="openDelete(${row.id_marca})">
                             <i class="bi bi-trash-fill"></i>
                         </button>
+                        <button id="btn_report" type="button" class="btn" onclick="openReport(${row.id_marca})">
+                            <i class="bi bi-file-earmark-pdf-fill"></i>
+                        </button>
                     </td>
                 </tr>
             `;
@@ -165,15 +168,15 @@ const openDelete = async (id) => {
 }
 
 /*
-*   Función para abrir un reporte parametrizado de productos de una categoría.
+*   Función para abrir un reporte parametrizado de productos de una marca.
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
 const openReport = (id) => {
     // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
-    const PATH = new URL(`${SERVER_URL}reports/admin/productos_categoria.php`);
+    const PATH = new URL(`${SERVER_URL}reports/admin/productos_marca.php`);
     // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
-    PATH.searchParams.append('idCategoria', id);
+    PATH.searchParams.append('idMarca', id);
     // Se abre el reporte en una nueva pestaña.
     window.open(PATH.href);
 }

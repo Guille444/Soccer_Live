@@ -32,10 +32,8 @@ if (isset($_GET['idCategoria'])) {
                 $pdf->cell(126, 10, 'Nombre', 1, 0, 'C', 1);
                 $pdf->cell(30, 10, 'Precio (US$)', 1, 0, 'C', 1);
                 $pdf->cell(30, 10, 'Estado', 1, 1, 'C', 1);
-
                 // Restablecer el color del texto a negro para los datos
                 $pdf->SetTextColor(0, 0, 0);
-
                 // Se establece la fuente para los datos de los productos.
                 $pdf->setFont('Arial', '', 11);
                 // Establecer color de fondo gris claro para las filas de datos
@@ -52,7 +50,7 @@ if (isset($_GET['idCategoria'])) {
                 $pdf->cell(0, 10, $pdf->encodeString('No hay productos para la categoría'), 1, 1, 'C');
             }
             // Se llama implícitamente al método footer() y se envía el documento al navegador web.
-            $pdf->output('I', 'categoria.pdf');
+            $pdf->output('I', 'Productos por categoria.pdf');
         } else {
             print('Categoría inexistente');
         }
