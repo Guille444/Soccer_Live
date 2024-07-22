@@ -188,4 +188,28 @@ class ProductoHandler
                 GROUP BY nombre_marca ORDER BY porcentaje DESC';
         return Database::getRows($sql);
     }
+
+    /*
+    *   Métodos para generar gráficos.
+    */
+
+  
+    public function cantidadProductosVendidos()
+    {
+        $sql = 'SELECT id_producto, descripcion_producto, ROUND(SUM(cantidad_producto) * 100.0 / total_comprados.total_cantidad, 1) AS porcentaje
+        FROM pedidos 
+        JOIN detalle_pedidos USING(id_pedido)
+        JOIN productos m USING(id_producto)
+        JOIN (
+            SELECT SUM(d.cantidad_producto) AS total_cantidad 
+            FROM pedidos 
+            JOIN detalle_pedidos d USING(id_pedido)
+            WHERE estado_pedido = "Finalizado"
+        ) AS total_comprados
+        WHERE estado_pedido = "Finalizado"
+        GROUP BY id_producto, descripcion_producto, total_comprados.total_cantidad
+        ORDER BY porcentaje DESC 
+        LIMIT 10; '.$this->id.';';
+        return Database::getRows($sql);
+    }
 }
