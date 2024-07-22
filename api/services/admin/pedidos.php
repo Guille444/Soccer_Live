@@ -57,6 +57,20 @@ if (isset($_GET['action'])) {
                 }
 
                 break;
+                case 'CantidadEstadoPedidos':
+                    if ($result['dataset'] = $pedidos->CantidadEstadoPedidos()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['error'] = 'No hay datos disponibles';
+                    }
+                    break;
+                    case 'PorsentajeEstadoPedidos':
+                        if ($result['dataset'] = $pedidos->PorsentajeEstadoPedidos()) {
+                            $result['status'] = 1;
+                        } else {
+                            $result['error'] = 'No hay datos disponibles';
+                        }
+                        break;
         }
     } else {
         // Se compara la acción a realizar cuando el valoracion$valoracion no ha iniciado sesión.

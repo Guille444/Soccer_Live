@@ -1,14 +1,14 @@
 <?php
 // Se incluye la clase para trabajar con la base de datos.
-require_once('../../helpers/database.php');
+require_once ('../../helpers/database.php');
 /*
-*	Clase para manejar el comportamiento de los datos de las tablas PEDIDO y DETALLE_PEDIDO.
-*/
+ *	Clase para manejar el comportamiento de los datos de las tablas PEDIDO y DETALLE_PEDIDO.
+ */
 class PedidoHandler
 {
     /*
-    *   Declaración de atributos para el manejo de datos.
-    */
+     *   Declaración de atributos para el manejo de datos.
+     */
     protected $id = null;
     protected $id_pedido = null;
     protected $id_detalle = null;
@@ -18,16 +18,16 @@ class PedidoHandler
     protected $estado = null;
 
     /*
-    *   ESTADOS DEL PEDIDO
-    *   Pendiente (valor por defecto en la base de datos). Pedido en proceso y se puede modificar el detalle.
-    *   Finalizado. Pedido terminado por el cliente y ya no es posible modificar el detalle.
-    *   Entregado. Pedido enviado al cliente.
-    *   Anulado. Pedido cancelado por el cliente después de ser finalizado.
-    */
+     *   ESTADOS DEL PEDIDO
+     *   Pendiente (valor por defecto en la base de datos). Pedido en proceso y se puede modificar el detalle.
+     *   Finalizado. Pedido terminado por el cliente y ya no es posible modificar el detalle.
+     *   Entregado. Pedido enviado al cliente.
+     *   Anulado. Pedido cancelado por el cliente después de ser finalizado.
+     */
 
     /*
-    *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
-    */
+     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
+     */
     // Método para verificar si existe un pedido en proceso con el fin de iniciar o continuar una compra.
     public function getOrder()
     {
@@ -115,8 +115,8 @@ class PedidoHandler
     }
 
     /*
-    *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
-    */
+     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
+     */
     public function searchRows()
     {
         $value = '%' . Validator::getSearchValue() . '%';
@@ -161,5 +161,38 @@ class PedidoHandler
         //$_SESSION['idmod'] = $data['id_modelo'];
 
         return $data;
+    }
+
+    public function getPopularBrands($limit = 5)
+    {
+        $sql = 'SELECT m.id, m.nombre_marca, COUNT(p.id_producto) AS cantidad_productos
+            FROM marca m
+LEFT JOIN producto p ON m.id = p.id_marca
+GROUP BY m.id, m.nombre_marca
+            ORDER BY cantidad_productos DESC
+            LIMIT ?';
+        $params = array($limit);
+        return Database::getRows($sql, $params);
+    }
+
+
+    /*
+    *   Métodos para generar gráficos.
+    */
+    public function CantidadEstadoPedidos()
+    {
+        $sql = 'SELECT estado_pedido, COUNT(id_detalle) cantidad
+                FROM detalle_pedidos
+                INNER JOIN pedidos USING(id_pedido)
+                GROUP BY estado_pedido ORDER BY cantidad DESC LIMIT 5';
+        return Database::getRows($sql);
+    }
+    public function PorsentajeEstadoPedidos()
+    {
+        $sql = 'SELECT estado_pedido, ROUND((COUNT(id_detalle) * 100.0 / (SELECT COUNT(id_detalle) FROM detalle_pedidos)), 2) porcentaje
+        FROM detalle_pedidos
+        INNER JOIN pedidos USING(id_pedido)
+        GROUP BY estado_pedido ORDER BY porcentaje DESC';
+        return Database::getRows($sql);
     }
 }
