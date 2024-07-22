@@ -80,16 +80,16 @@ const fillTable = async (form = null) => {
                     <td>${row.nombre_categoria}</td>
                     <td>${row.descripcion_categoria}</td>
                     <td>
-                        <button id="btn_editar" type="button" class="btn" onclick="openUpdate(${row.id_categoria})">
+                        <button id="btn_editar" title="Editar categoría" type="button" class="btn" onclick="openUpdate(${row.id_categoria})">
                             <i class="bi bi-pencil-fill"></i>
                         </button>
-                        <button id="btn_delete" type="button" class="btn" onclick="openDelete(${row.id_categoria})">
+                        <button id="btn_delete"  title="Eliminar categoría" type="button" class="btn" onclick="openDelete(${row.id_categoria})">
                             <i class="bi bi-trash-fill"></i>
                         </button>
-                        <button id="btn_editar" type="button" class="btn" onclick="openChart(${row.id_categoria})">
+                        <button id="btn_editar" title="Visualizar gráficos" type="button" class="btn" onclick="openChart(${row.id_categoria})">
                             <i class="bi bi-bar-chart-line-fill"></i>
                         </button>
-                        <button id="btn_report" type="button" class="btn" onclick="openReport(${row.id_categoria})">
+                        <button id="btn_report" title="Generar reporte" type="button" class="btn" onclick="openReport(${row.id_categoria})">
                             <i class="bi bi-file-earmark-pdf-fill"></i>
                         </button>
                     </td>
