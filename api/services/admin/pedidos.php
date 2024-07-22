@@ -71,6 +71,17 @@ if (isset($_GET['action'])) {
                             $result['error'] = 'No hay datos disponibles';
                         }
                         break;
+                        case 'prediccionGanancia':
+                            if (
+                                !$pedidos->setId($_POST['limit']) 
+                            ) {
+                                $result['error'] = $pedidos->getDataError();
+                            } elseif ($result['dataset'] = $pedidos->prediccionGanancia()) {
+                                $result['status'] = 1;
+                            } else {
+                                $result['error'] = 'No hay datos disponibles';
+                            }
+                            break;
         }
     } else {
         // Se compara la acción a realizar cuando el valoracion$valoracion no ha iniciado sesión.
