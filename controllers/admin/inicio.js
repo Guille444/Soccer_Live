@@ -24,7 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     graficoBarrasCategorias();
     graficoPastelEstado();
     graficoPastelMarcas();
-    graficoBarrasMarcas();
+    graficoBarrasProductos();
+
 });
 
 /*
@@ -116,24 +117,26 @@ const graficoPastelMarcas = async () => {
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
-const graficoBarrasMarcas = async () => {
+const graficoBarrasProductos = async () => {
+  
     // Petición para obtener los datos del gráfico.
-    const DATA = await fetchData(PRODUCTO_API, 'cantidadProductosMarca');
+    const DATA = await fetchData(PRODUCTO_API, 'cantidadProductosVendidos');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
     if (DATA.status) {
         // Se declaran los arreglos para guardar los datos a graficar.
-        let marcas = [];
-        let cantidades = [];
+        let pedidos = [];
+        let porcentajes = [];
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         DATA.dataset.forEach(row => {
             // Se agregan los datos a los arreglos.
-            marcas.push(row.nombre_marca);
-            cantidades.push(row.cantidad);
+            pedidos.push(row.descripcion_producto);
+            porcentajes.push(row.porcentaje);
         });
         // Llamada a la función para generar y mostrar un gráfico de barras. Se encuentra en el archivo components.js
-        barGraph('chart4', marcas, cantidades, 'Cantidad de productos', 'Cantidad de productos por marcas');
+        doughnutGraph('chart4', pedidos, porcentajes, '');
     } else {
         document.getElementById('chart4').remove();
         console.log(DATA.error);
     }
 }
+
