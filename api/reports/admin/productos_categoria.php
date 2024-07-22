@@ -1,7 +1,6 @@
 <?php
 // Se incluye la clase con las plantillas para generar reportes.
-require_once('../../helpers/report.php');
-
+require('../../helpers/report.php');
 // Se instancia la clase para crear el reporte.
 $pdf = new Report;
 // Se verifica si existe un valor para la categoría, de lo contrario se muestra un mensaje.
@@ -50,7 +49,7 @@ if (isset($_GET['idCategoria'])) {
                 $pdf->cell(0, 10, $pdf->encodeString('No hay productos para la categoría'), 1, 1, 'C');
             }
             // Se llama implícitamente al método footer() y se envía el documento al navegador web.
-            $pdf->output('I', 'Productos por categoria.pdf');
+            $pdf->output('I', 'categorias.pdf');
         } else {
             print('Categoría inexistente');
         }

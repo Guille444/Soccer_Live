@@ -184,6 +184,7 @@ const openReport = (id) => {
     // Se abre el reporte en una nueva pestaña.
     window.open(PATH.href);
 }
+
 /*
 Función asíncrona para mostrar un gráfico parametrizado.
 *   Parámetros: id (identificador del registro seleccionado).

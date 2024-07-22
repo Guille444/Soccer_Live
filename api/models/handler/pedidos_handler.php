@@ -1,6 +1,6 @@
     <?php
     // Se incluye la clase para trabajar con la base de datos.
-    require_once ('../../helpers/database.php');
+    require_once('../../helpers/database.php');
     /*
     *	Clase para manejar el comportamiento de los datos de las tablas PEDIDO y DETALLE_PEDIDO.
     */
@@ -196,7 +196,8 @@
             return Database::getRows($sql);
         }
 
-        public function prediccionGanancia(){
+        public function prediccionGanancia()
+        {
             $sql = "WITH ventas AS (
                 SELECT 
                     DATE_FORMAT(p.fecha_registro, '%Y-%m') AS mes, 
@@ -221,7 +222,7 @@
                 WHERE p.estado_pedido = 'Finalizado'
                 GROUP BY DATE_FORMAT(p.fecha_registro, '%Y-%m')
                 ORDER BY DATE_FORMAT(p.fecha_registro, '%Y-%m') DESC
-                LIMIT ".$this->id."
+                LIMIT " . $this->id . "
             ),
             coeficientes AS (
                 SELECT 
@@ -268,9 +269,19 @@
             FROM ventas v
             CROSS JOIN prediccion p
             ORDER BY v.mes ASC;";
-            
+
             $params = array();
             return Database::getRows($sql, $params);
         }
-        
-    }
+
+        // Método para obtener pedidos por cliente.
+        public function pedidosPorCliente()
+        {
+            $sql = 'SELECT clientes.nombre_cliente, clientes.apellido_cliente, pedidos.direccion_pedido, 
+                       pedidos.estado_pedido, pedidos.fecha_registro
+                FROM pedidos
+                INNER JOIN clientes ON pedidos.id_cliente = clientes.id_cliente
+                ORDER BY clientes.apellido_cliente, clientes.nombre_cliente, pedidos.fecha_registro';
+            return Database::getRows($sql);
+        }
+}

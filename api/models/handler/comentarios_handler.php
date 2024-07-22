@@ -228,4 +228,21 @@ class ComentarioHandler
         $params = array($this->categoria);
         return Database::getRows($sql, $params);
     }
+
+    /*
+    *   Métodos para generar reportes.
+    */
+
+    // Método para obtener comentarios por producto.
+    public function comentariosProducto()
+    {
+        $sql = 'SELECT productos.nombre_producto, comentarios.contenido_comentario, comentarios.puntuacion_comentario, 
+                       comentarios.fecha_comentario, 
+                       CASE WHEN comentarios.estado_comentario = 1 THEN "Activo" ELSE "Inactivo" END AS estado_comentario
+                FROM comentarios
+                INNER JOIN detalle_pedidos ON comentarios.id_detalle = detalle_pedidos.id_detalle
+                INNER JOIN productos ON detalle_pedidos.id_producto = productos.id_producto
+                ORDER BY productos.nombre_producto, comentarios.fecha_comentario';
+        return Database::getRows($sql);
+    }
 }
