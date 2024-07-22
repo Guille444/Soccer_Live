@@ -82,7 +82,7 @@ const fillTable = async (form = null) => {
                     <td>${row.fecha}</td>
                     <td>${row.estado_pedido}</i></td>
                     <td>
-                        <button id="btn_editar" type="button" class="btn" onclick="openUpdate(${row.id_pedido})">
+                        <button id="btn_editar" title="Editar estado del pedido" type="button" class="btn" onclick="openUpdate(${row.id_pedido})">
                             <i class="bi bi-info-circle"></i>
                         </button>
                     </td>
