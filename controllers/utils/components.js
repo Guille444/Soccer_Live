@@ -301,3 +301,85 @@ const lineGraph = (canvas, legends, values, title) => {
         }
     });
 }
+
+/*
+*   Función para generar un gráfico de área. Requiere la librería chart.js para funcionar.
+*   Parámetros: canvas (identificador de la etiqueta canvas), legends (valores para las etiquetas), values (valores de los datos) y title (título del gráfico).
+*   Retorno: ninguno.
+*/
+let existingAreaChart;
+const areaGraph = (canvas, legends, values, title) => {
+    // Destruir gráfico existente si lo hay para evitar superposiciones.
+    if (existingAreaChart) {
+        existingAreaChart.destroy();
+    }
+
+    // Generar un color aleatorio.
+    let color = '#' + (Math.random().toString(16).substring(2, 8));
+
+    // Crear una nueva instancia del gráfico.
+    existingAreaChart = new Chart(document.getElementById(canvas), {
+        type: 'line',
+        data: {
+            labels: legends,
+            datasets: [{
+                label: '',
+                data: values,
+                backgroundColor: color,
+                borderColor: color,
+                borderWidth: 2,
+                tension: 0.1,
+                pointBackgroundColor: color
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: title
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+/*
+*   Función para generar un gráfico polar. Requiere la librería chart.js para funcionar.
+*   Parámetros: canvas (identificador de la etiqueta canvas), legends (valores para las etiquetas), values (valores de los datos) y title (título del gráfico).
+*   Retorno: ninguno.
+*/
+let existingPolarChart;
+const polarGraph = (canvas, legends, values, title) => {
+    // Destruir gráfico existente si lo hay para evitar superposiciones.
+    if (existingPolarChart) {
+        existingPolarChart.destroy();
+    }
+
+    let colors = [];
+    values.forEach(() => {
+        colors.push('#' + (Math.random().toString(16)).substring(2, 8));
+    });
+    existingPolarChart = new Chart(document.getElementById(canvas), {
+        type: 'polarArea',
+        data: {
+            labels: legends,
+            datasets: [{
+                data: values,
+                backgroundColor: colors
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: title
+                }
+            }
+        }
+    });
+}
