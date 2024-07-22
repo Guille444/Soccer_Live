@@ -54,17 +54,17 @@ h4 {
 }
 
 .dashboard-item {
-    background-color: #081F49; /* Fondo blanco de cada gráfica */
+    background-color: white; /* Fondo blanco de cada gráfica */
     border-radius: 8px;
     padding: 20px;
-    color: white; /* Asegurar que el texto sea blanco */
+    color: black; /* Asegurar que el texto sea blanco */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
 
 .dashboard-item h4 {
     margin-bottom: 20px;
-    color: white; /* Asegurar que el texto del título sea blanco */
+    color: black; /* Asegurar que el texto del título sea blanco */
 }
 
 .canvas-container {

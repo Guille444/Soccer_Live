@@ -57,31 +57,27 @@ if (isset($_GET['action'])) {
                 }
 
                 break;
-                case 'CantidadEstadoPedidos':
-                    if ($result['dataset'] = $pedidos->CantidadEstadoPedidos()) {
-                        $result['status'] = 1;
-                    } else {
-                        $result['error'] = 'No hay datos disponibles';
-                    }
-                    break;
-                    case 'PorsentajeEstadoPedidos':
-                        if ($result['dataset'] = $pedidos->PorsentajeEstadoPedidos()) {
-                            $result['status'] = 1;
-                        } else {
-                            $result['error'] = 'No hay datos disponibles';
-                        }
-                        break;
-                        case 'prediccionGanancia':
-                            if (
-                                !$pedidos->setId($_POST['limit']) 
-                            ) {
-                                $result['error'] = $pedidos->getDataError();
-                            } elseif ($result['dataset'] = $pedidos->prediccionGanancia()) {
-                                $result['status'] = 1;
-                            } else {
-                                $result['error'] = 'No hay datos disponibles';
-                            }
-                            break;
+            case 'CantidadEstadoPedidos':
+                if ($result['dataset'] = $pedidos->CantidadEstadoPedidos()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['error'] = 'No hay datos disponibles';
+                }
+                break;
+            case 'PorcentajeEstadoPedidos':
+                if ($result['dataset'] = $pedidos->PorcentajeEstadoPedidos()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['error'] = 'No hay datos disponibles';
+                }
+                break;
+            case 'prediccionGanancia':
+                if ($result['dataset'] = $pedidos->prediccionGanancia()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['error'] = 'No hay datos disponibles';
+                }
+                break;
         }
     } else {
         // Se compara la acción a realizar cuando el valoracion$valoracion no ha iniciado sesión.

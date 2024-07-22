@@ -179,6 +179,7 @@
         /*
         *   Métodos para generar gráficos.
         */
+
         public function CantidadEstadoPedidos()
         {
             $sql = 'SELECT estado_pedido, COUNT(id_detalle) cantidad
@@ -187,7 +188,8 @@
                     GROUP BY estado_pedido ORDER BY cantidad DESC LIMIT 5';
             return Database::getRows($sql);
         }
-        public function PorsentajeEstadoPedidos()
+
+        public function PorcentajeEstadoPedidos()
         {
             $sql = 'SELECT estado_pedido, ROUND((COUNT(id_detalle) * 100.0 / (SELECT COUNT(id_detalle) FROM detalle_pedidos)), 2) porcentaje
             FROM detalle_pedidos
@@ -222,7 +224,7 @@
                 WHERE p.estado_pedido = 'Finalizado'
                 GROUP BY DATE_FORMAT(p.fecha_registro, '%Y-%m')
                 ORDER BY DATE_FORMAT(p.fecha_registro, '%Y-%m') DESC
-                LIMIT " . $this->id . "
+                LIMIT 6 -- Cambia este valor según la cantidad de meses que desees mostrar
             ),
             coeficientes AS (
                 SELECT 
@@ -274,6 +276,7 @@
             return Database::getRows($sql, $params);
         }
 
+
         // Método para obtener pedidos por cliente.
         public function pedidosPorCliente()
         {
@@ -284,4 +287,4 @@
                 ORDER BY clientes.apellido_cliente, clientes.nombre_cliente, pedidos.fecha_registro';
             return Database::getRows($sql);
         }
-}
+    }

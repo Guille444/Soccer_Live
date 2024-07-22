@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     graficoPastelEstado();
     graficoPastelMarcas();
     graficoBarrasProductos();
-    graficoGanancias();
+    graficaGanancias();
 });
 
 /*
@@ -65,7 +65,7 @@ const graficoBarrasCategorias = async () => {
 */
 const graficoPastelEstado = async () => {
     // Petición para obtener los datos del gráfico.
-    const DATA = await fetchData(PEDIDO_API, 'PorsentajeEstadoPedidos');
+    const DATA = await fetchData(PEDIDO_API, 'PorcentajeEstadoPedidos');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
     if (DATA.status) {
         // Se declaran los arreglos para guardar los datos a gráficar.
@@ -145,9 +145,9 @@ const graficoBarrasProductos = async () => {
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
-const graficoGanancias = async () => {
+const graficaGanancias = async () => {
     // Petición para obtener los datos del gráfico.
-    const DATA = await fetchData(PEDIDO_API, 'prediccionGanancia');
+    const DATA = await fetchData(PEDIDO_API, 'prediccionGanancia', null);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
     if (DATA.status) {
         // Se declaran los arreglos para guardar los datos a graficar.
@@ -168,4 +168,3 @@ const graficoGanancias = async () => {
         console.log(DATA.error);
     }
 }
-
