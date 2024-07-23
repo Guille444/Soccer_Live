@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase para trabajar con la base de datos.
-require_once('../../helpers/database.php');
+require_once ('../../helpers/database.php');
 /*
  *  Clase para manejar el comportamiento de los datos de la tabla empleado.
  */
@@ -20,23 +20,26 @@ class EmpleadoHandler
     /*
      *  Métodos para gestionar la cuenta del empleado.
      */
+
+    // Método para verificar el inicio de sesión del empleado.
     public function checkUser($username, $password)
-{
-    $sql = 'SELECT id_empleado, correo_empleado, clave_empleado
+    {
+        $sql = 'SELECT id_empleado, correo_empleado, clave_empleado
             FROM empleados
             WHERE  correo_empleado = ?';
-    $params = array($username);
-    $data = Database::getRow($sql, $params);
-    if ($data && password_verify($password, $data['clave_empleado'])) {
-        $_SESSION['idEmpleado'] = $data['id_empleado'];
-        $_SESSION['correoEmpleado'] = $data['correo_empleado'];
-        return true;
-    } else {
-        return false;
+        $params = array($username);
+        $data = Database::getRow($sql, $params);
+        if ($data && password_verify($password, $data['clave_empleado'])) {
+            $_SESSION['idEmpleado'] = $data['id_empleado'];
+            $_SESSION['correoEmpleado'] = $data['correo_empleado'];
+            return true;
+        } else {
+            return false;
+        }
     }
-}
 
 
+    //Método para verificar si la contraseña actual del empleado es correcta.
     public function checkPassword($password)
     {
         $sql = 'SELECT clave_empleado
@@ -62,6 +65,7 @@ class EmpleadoHandler
         return Database::executeRow($sql, $params);
     }
 
+    //Método para leer el perfil del empleado actual.
     public function readProfile()
     {
         $sql = 'SELECT id_empleado, nombre_empleado, apellido_empleado, telefono_empleado, dui_empleado, correo_empleado, clave_empleado
@@ -72,7 +76,7 @@ class EmpleadoHandler
     }
 
 
-
+    //Método para editar el perfil del empleado.
     public function editProfile()
     {
         $sql = 'UPDATE empleados
@@ -85,6 +89,8 @@ class EmpleadoHandler
     /*
      *  Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
      */
+
+    //Método para buscar empleados basado en el apellido.
     public function searchRows()
     {
         $value = '%' . Validator::getSearchValue() . '%';
@@ -96,6 +102,7 @@ class EmpleadoHandler
         return Database::getRows($sql, $params);
     }
 
+    //Método para crear un nuevo empleado.
     public function createRow()
     {
         $sql = 'INSERT INTO empleados(nombre_empleado, apellido_empleado, telefono_empleado, dui_empleado, correo_empleado, clave_empleado)
@@ -103,8 +110,9 @@ class EmpleadoHandler
         $params = array($this->nombre, $this->apellido, $this->telefono, $this->dui, $this->correo, $this->clave);
         return Database::executeRow($sql, $params);
     }
-    
 
+
+    //Método para leer todos los empleados.
     public function readAll()
     {
         $sql = 'SELECT id_empleado, nombre_empleado, apellido_empleado, telefono_empleado, dui_empleado, correo_empleado, clave_empleado
@@ -113,6 +121,7 @@ class EmpleadoHandler
         return Database::getRows($sql);
     }
 
+    //Método para leer un empleado específico por su ID.
     public function readOne()
     {
         $sql = 'SELECT id_empleado, nombre_empleado, apellido_empleado, telefono_empleado, dui_empleado, correo_empleado, clave_empleado
@@ -122,6 +131,7 @@ class EmpleadoHandler
         return Database::getRow($sql, $params);
     }
 
+    //Método para actualizar los datos de un empleado específico.
     public function updateRow()
     {
         $sql = 'UPDATE empleados
@@ -131,6 +141,7 @@ class EmpleadoHandler
         return Database::executeRow($sql, $params);
     }
 
+    //Método para eliminar un empleado específico por su ID.
     public function deleteRow()
     {
         $sql = 'DELETE FROM empleados
@@ -138,6 +149,8 @@ class EmpleadoHandler
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+    //Método para verificar si ya existe un empleado con el mismo DUI.
 
     public function checkDuplicate($value)
     {
@@ -148,6 +161,8 @@ class EmpleadoHandler
         return Database::getRow($sql, $params);
     }
 
+    //Método para verificar si ya existe un empleado con el mismo correo electrónico.
+
     public function checkDuplicate2($value)
     {
         $sql = 'SELECT id_empleado
@@ -157,12 +172,14 @@ class EmpleadoHandler
         return Database::getRow($sql, $params);
     }
 
+    //Método para verificar si ya existe un empleado con el mismo número de teléfono.
     public function checkDuplicate3($value)
     {
         $sql = 'SELECT id_empleado
                 FROM empleados
                 WHERE telefono_empleado = ?';
         $params = array($value);
+        // Verificar si ya existe un empleado con el mismo número de teléfono en la base de datos
         return Database::getRow($sql, $params);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase para trabajar con la base de datos.
-require_once('../../helpers/database.php');
+require_once ('../../helpers/database.php');
 /*
  *  Clase para manejar el comportamiento de los datos de la tabla Marca.
  */
@@ -30,6 +30,7 @@ class MarcaHandler
         return Database::getRows($sql, $params);
     }
 
+    //Método para crear una nueva marca.
     public function createRow()
     {
         $sql = 'INSERT INTO marcas(nombre_marca, correo_marca, imagen_marca)
@@ -37,7 +38,7 @@ class MarcaHandler
         $params = array($this->nombre, $this->correo, $this->imagen);
         return Database::executeRow($sql, $params);
     }
-
+    //Método para leer todas las marcas.
     public function readAll()
     {
         $sql = 'SELECT id_marca, nombre_marca, correo_marca, imagen_marca
@@ -45,6 +46,8 @@ class MarcaHandler
                 ORDER BY nombre_marca';
         return Database::getRows($sql);
     }
+
+    //Método para leer una marca específica por su ID.
 
     public function readOne()
     {
@@ -55,6 +58,7 @@ class MarcaHandler
         return Database::getRow($sql, $params);
     }
 
+    //étodo para leer el nombre del archivo de imagen de una marca específica por su ID.
     public function readFilename()
     {
         $sql = 'SELECT imagen_marca
@@ -64,6 +68,7 @@ class MarcaHandler
         return Database::getRow($sql, $params);
     }
 
+    //Método para actualizar los datos de una marca específica.
     public function updateRow()
     {
         $sql = 'UPDATE marcas
@@ -73,6 +78,7 @@ class MarcaHandler
         return Database::executeRow($sql, $params);
     }
 
+    //Método para eliminar una marca específica por su ID.
     public function deleteRow()
     {
         $sql = 'DELETE FROM marcas
@@ -81,6 +87,7 @@ class MarcaHandler
         return Database::executeRow($sql, $params);
     }
 
+    //Método para verificar si ya existe una marca con el mismo nombre.
     public function checkDuplicate($value)
     {
         $sql = 'SELECT id_marca
@@ -90,6 +97,7 @@ class MarcaHandler
         return Database::getRow($sql, $params);
     }
 
+    //Método para verificar si ya existe una marca con el mismo correo electrónico.
     public function checkDuplicate2($value)
     {
         $sql = 'SELECT id_marca
@@ -99,6 +107,7 @@ class MarcaHandler
         return Database::getRow($sql, $params);
     }
 
+    //Método para leer los productos más vendidos de una marca específica.
     public function readTopProductos()
     {
         $sql = 'SELECT nombre_producto, SUM(cantidad_producto) total
