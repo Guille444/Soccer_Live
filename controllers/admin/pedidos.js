@@ -4,17 +4,18 @@ const PEDIDO_API = 'services/admin/pedidos.php';
 const SEARCH_FORM = document.getElementById('searchForm');
 // Constantes para establecer el contenido de la tabla.
 TABLE_BODY = document.getElementById('tableBody'),
-    ROWS_FOUND = document.getElementById('rowsFound');
+ROWS_FOUND = document.getElementById('rowsFound');
 // Constantes para establecer los elementos del componente Modal.
 const SAVE_MODAL = new bootstrap.Modal('#saveModal'),
-    MODAL_TITLE = document.getElementById('modalTitle');
+MODAL_TITLE = document.getElementById('modalTitle');
 // Constantes para establecer los elementos del formulario de guardar.
 const SAVE_FORM = document.getElementById('saveForm'),
-    ID_PEDIDO = document.getElementById('idPedido'),
-    CLIENTE_PEDIDO = document.getElementById('nombreCliente'),
-    DIRECCION_PEDIDO = document.getElementById('direccionPedido'),
-    FECHA_PEDIDO = document.getElementById('fechaPedido'),
-    ESTADO_PEDIDO = document.getElementById('estadoPedido');
+ID_PEDIDO = document.getElementById('idPedido'),
+CLIENTE_PEDIDO = document.getElementById('nombreCliente'),
+DIRECCION_PEDIDO = document.getElementById('direccionPedido'),
+FECHA_PEDIDO = document.getElementById('fechaPedido'),
+ESTADO_PEDIDO = document.getElementById('estadoPedido');
+
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para mostrar el encabezado y pie del documento.
@@ -85,6 +86,9 @@ const fillTable = async (form = null) => {
                         <button id="btn_editar" title="Editar estado del pedido" type="button" class="btn" onclick="openUpdate(${row.id_pedido})">
                             <i class="bi bi-info-circle"></i>
                         </button>
+                        <button id="btn_report" title="Reporte del pedido" type="button" class="btn" onclick="openReportDetalle(${row.id_pedido})">
+                            <i class="bi bi-file-earmark-pdf-fill"></i>
+                        </button>
                     </td>
                 </tr>
             `;
@@ -95,7 +99,6 @@ const fillTable = async (form = null) => {
         sweetAlert(4, DATA.error, true);
     }
 }
-
 
 //Función asíncrona para preparar el formulario al momento de actualizar un registro.
 const openUpdate = async (id) => {
@@ -165,6 +168,20 @@ const openDelete = async (id) => {
 const openReport = () => {
     // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
     const PATH = new URL(`${SERVER_URL}reports/admin/pedidos_cliente.php`);
+    // Se abre el reporte en una nueva pestaña.
+    window.open(PATH.href);
+}
+
+/*
+*   Función para abrir un reporte automático de PEDIDOs por categoría.
+*   Parámetros: id del pedido.
+*   Retorno: ninguno.
+*/
+const openReportDetalle = (id) => {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/admin/pedido_detalle.php`);
+    // Se añade el parámetro id_pedido a la URL
+    PATH.searchParams.append('id_pedido', id);
     // Se abre el reporte en una nueva pestaña.
     window.open(PATH.href);
 }

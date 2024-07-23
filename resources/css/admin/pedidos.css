@@ -28,6 +28,10 @@ main {
     padding: 50px;
 }
 
+#btn_report {
+    color: #FEAF00;
+}
+
 #tabla {
     background-color: #0C3A6B;
     color: #FFFFFF;

@@ -151,7 +151,7 @@
 
         public function readOne()
         {
-            $sql = 'SELECT p.id_pedido,CONCAT(c.nombre_cliente," ",c.apellido_cliente) as cliente,
+            $sql = 'SELECT p.id_pedido,CONCAT(c.nombre_cliente," ",c.apellido_cliente) as cliente, telefono_cliente,
             DATE_FORMAT(p.fecha_registro, "%d-%m-%Y") AS fecha,p.estado_pedido, p.direccion_pedido
             from pedidos p
             inner join clientes c USING(id_cliente)
@@ -286,5 +286,45 @@
                 INNER JOIN clientes ON pedidos.id_cliente = clientes.id_cliente
                 ORDER BY clientes.apellido_cliente, clientes.nombre_cliente, pedidos.fecha_registro';
             return Database::getRows($sql);
+        }
+
+        // Método para obtener la información de un pedido específico por su ID
+        public function obtenerPedidoPorId($id_pedido)
+        {
+            $sql = 'SELECT p.id_pedido, p.direccion_pedido, p.estado_pedido, p.fecha_registro,
+                       c.nombre_cliente, c.apellido_cliente, c.correo_cliente, c.telefono_cliente
+                FROM pedidos p
+                INNER JOIN clientes c ON p.id_cliente = c.id_cliente
+                WHERE p.id_pedido = ?';
+            $params = array($id_pedido);
+            return Database::getRow($sql, $params);
+        }
+
+        // Método para obtener el detalle de un pedido específico por su ID
+        public function obtenerDetallePedido($id_pedido)
+        {
+            $sql = 'SELECT dp.id_detalle, pr.nombre_producto, dp.cantidad_producto, dp.precio_producto
+                FROM detalle_pedidos dp
+                INNER JOIN productos pr ON dp.id_producto = pr.id_producto
+                WHERE dp.id_pedido = ?';
+            $params = array($id_pedido);
+            return Database::getRows($sql, $params);
+        }
+
+        public function readFactura()
+        {
+            $sql = 'SELECT id_detalle,
+                nombre_producto, nombre_marca, nombre_categoria,
+                cantidad_producto, DATE_FORMAT(fecha_registro, "%h:%i %p - %e %b %Y") AS fecha,
+                CONCAT(nombre_cliente," ",apellido_cliente), precio_producto
+                FROM detalle_pedidos
+                INNER JOIN productos USING(id_producto)
+                INNER JOIN pedidos USING(id_pedido)
+                INNER JOIN marcas USING(id_marca)
+                INNER JOIN categorias USING(id_categoria)
+                INNER JOIN clientes USING(id_cliente)
+                WHERE id_pedido = ?';
+            $params = array($this->id);
+            return Database::getRows($sql, $params);
         }
     }
