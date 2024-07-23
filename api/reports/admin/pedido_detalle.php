@@ -64,7 +64,7 @@ if (isset($_GET['id_pedido'])) {
             $pdf->Cell(80, 10, 'Producto', 1, 0, 'C', 1);
             $pdf->Cell(30, 10, 'Cantidad', 1, 0, 'C', 1);
             $pdf->Cell(30, 10, 'Precio', 1, 0, 'C', 1);
-            $pdf->Cell(30, 10, 'Total', 1, 1, 'C', 1);
+            $pdf->Cell(46, 10, 'Total', 1, 1, 'C', 1);
             // Variable para almacenar el total del pedido
             $totalPedido = 0;
             // Datos del detalle del pedido
@@ -76,14 +76,14 @@ if (isset($_GET['id_pedido'])) {
                 $pdf->Cell(80, 10, $pdf->encodeString($rowDetalle['nombre_producto']), 1, 0, 'C', 1);
                 $pdf->Cell(30, 10, $rowDetalle['cantidad_producto'], 1, 0, 'C', 1);
                 $pdf->Cell(30, 10, number_format($rowDetalle['precio_producto'], 2), 1, 0, 'C', 1); // Formato de precio
-                $pdf->Cell(30, 10, number_format($totalProducto, 2), 1, 1, 'C', 1); // Formato de total
+                $pdf->Cell(46, 10, number_format($totalProducto, 2), 1, 1, 'C', 1); // Formato de total
             }
             // Mostrar el total del pedido
             $pdf->SetFont('Arial', 'B', 11);
             $pdf->SetFillColor(224, 224, 224); // Fondo gris claro para el total
             $pdf->Cell(140, 10, 'Total del Pedido', 1, 0, 'R', 1);
             $pdf->SetFillColor(224, 224, 224); // Fondo gris claro para el total
-            $pdf->Cell(30, 10, number_format($totalPedido, 2), 1, 1, 'C', 1);
+            $pdf->Cell(46, 10, number_format($totalPedido, 2), 1, 1, 'C', 1);
         } else {
             $pdf->Cell(0, 10, 'No hay detalles disponibles', 1, 1);
         }

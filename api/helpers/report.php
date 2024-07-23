@@ -78,6 +78,19 @@ class Report extends FPDF
         $this->cell(166, 10, 'Fecha/Hora: ' . date('d-m-Y H:i:s'), 0, 1, 'C');
         // Se agrega un salto de línea para mostrar el contenido principal del documento.
         $this->ln(10);
+        $solicitud = '';
+        if (isset($_SESSION['idEmpleado'])) {
+            // Si la variable de sesión está establecida, asigna su valor a $solicitud
+            $solicitud = $_SESSION['usuarioEmpleado'];
+        } elseif (isset($_SESSION['idCliente'])) {
+            $solicitud = $_SESSION['usuarioCliente'];
+        } else {
+            $solicitud = '';
+        }
+        $this->setFont('Arial', 'I', 10);
+        $this->cell(0, 10, 'Solicitado por ' . $solicitud, 0, 1, 'C');
+        // Se agrega un salto de línea para mostrar el contenido principal del documento.
+        $this->ln(7);
     }
 
     /*

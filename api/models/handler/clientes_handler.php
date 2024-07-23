@@ -46,6 +46,7 @@ class ClienteHandler
     {
         if ($this->estado) {
             $_SESSION['idCliente'] = $this->id;
+            $_SESSION['usuarioCliente'] = $this->nombre;
             $_SESSION['correoCliente'] = $this->correo;
             return true;
         } else {

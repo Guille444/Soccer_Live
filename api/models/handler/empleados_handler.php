@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase para trabajar con la base de datos.
-require_once ('../../helpers/database.php');
+require_once('../../helpers/database.php');
 /*
  *  Clase para manejar el comportamiento de los datos de la tabla empleado.
  */
@@ -24,20 +24,21 @@ class EmpleadoHandler
     // Método para verificar el inicio de sesión del empleado.
     public function checkUser($username, $password)
     {
-        $sql = 'SELECT id_empleado, correo_empleado, clave_empleado
+        $sql = 'SELECT id_empleado, correo_empleado, clave_empleado,
+            CONCAT(nombre_empleado, " ", apellido_empleado) AS nombre_completo
             FROM empleados
-            WHERE  correo_empleado = ?';
+            WHERE correo_empleado = ?';
         $params = array($username);
         $data = Database::getRow($sql, $params);
         if ($data && password_verify($password, $data['clave_empleado'])) {
             $_SESSION['idEmpleado'] = $data['id_empleado'];
             $_SESSION['correoEmpleado'] = $data['correo_empleado'];
+            $_SESSION['usuarioEmpleado'] = $data['nombre_completo'];
             return true;
         } else {
             return false;
         }
     }
-
 
     //Método para verificar si la contraseña actual del empleado es correcta.
     public function checkPassword($password)
