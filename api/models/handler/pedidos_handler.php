@@ -327,4 +327,23 @@
             $params = array($this->id);
             return Database::getRows($sql, $params);
         }
+
+
+        public function CantidadFechaPedidos()
+        {
+            $sql = 'SELECT fecha_registro, COUNT(id_detalle) cantidad
+                    FROM detalle_pedidos
+                    INNER JOIN pedidos USING(id_pedido)
+                    GROUP BY fecha_registro ORDER BY cantidad DESC LIMIT 5';
+            return Database::getRows($sql);
+        }
+
+        public function PorcentajeFechaPedidos()
+        {
+            $sql = 'SELECT fecha_registro, ROUND((COUNT(id_detalle) * 100.0 / (SELECT COUNT(id_detalle) FROM detalle_pedidos)), 2) porcentaje
+            FROM detalle_pedidos
+            INNER JOIN pedidos USING(id_pedido)
+            GROUP BY fecha_registro ORDER BY porcentaje DESC';
+            return Database::getRows($sql);
+        }
     }
