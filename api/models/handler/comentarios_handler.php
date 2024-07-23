@@ -15,12 +15,12 @@ class ComentarioHandler
     protected $idDetalle = null;
     protected $puntuacion = null;
     protected $mensaje = null;
-    protected $nombre = null;
-    protected $descripcion = null;
-    protected $precio = null;
-    protected $existencias = null;
-    protected $imagen = null;
-    protected $categoria = null;
+    protected $nombre = null; // Este atributo parece no estar siendo utilizado en ninguna parte del código.
+    protected $descripcion = null; // Este atributo parece no estar siendo utilizado en ninguna parte del código.
+    protected $precio = null; // Este atributo parece no estar siendo utilizado en ninguna parte del código.
+    protected $existencias = null; // Este atributo parece no estar siendo utilizado en ninguna parte del código.
+    protected $imagen = null; // Este atributo parece no estar siendo utilizado en ninguna parte del código.
+    protected $categoria = null; // Este atributo parece no estar siendo utilizado en ninguna parte del código.
     protected $estado = null;
 
     // Constante para establecer la ruta de las imágenes.
@@ -29,6 +29,8 @@ class ComentarioHandler
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
     */
+
+    // Método para buscar comentarios por cliente o por modelo.
     public function searchRows()
     {
         $this->search = $this->search === '' ? '%%' : '%' . $this->search . '%';
@@ -51,6 +53,7 @@ class ComentarioHandler
         return Database::getRows($sql, $params);
     }
 
+    // Método para crear un nuevo comentario.
     public function createRow()
     {
 
@@ -60,6 +63,7 @@ class ComentarioHandler
         return Database::executeRow($sql, $params);
     }
 
+    // Método para leer todos los comentarios.
     public function readAll()
     {
         $sql = 'select id_comentario,id_detalle,CONCAT(nombre_cliente," ",apellido_cliente) as cliente,
@@ -75,6 +79,8 @@ class ComentarioHandler
         ORDER BY fecha_comentario DESC, estado_comentario DESC';
         return Database::getRows($sql);
     }
+
+    // Método para leer todos los comentarios activos de un producto específico.
     public function readAllActive()
     {
         $sql = 'select id_producto,id_comentario,id_detalle,CONCAT(nombre_cliente," ",apellido_cliente) as cliente,
@@ -93,6 +99,8 @@ class ComentarioHandler
 
         return Database::getRows($sql, $params);
     }
+
+    // Método para leer comentarios por id de detalle.
     public function readByIdDetalle()
     {
         $sql = 'select id_producto,id_comentario,id_detalle,CONCAT(nombre_cliente," ",apellido_cliente) as cliente,
@@ -111,6 +119,8 @@ class ComentarioHandler
 
         return Database::getRows($sql, $params);
     }
+
+    // Método para leer un comentario por su id.
     public function readByIdComentario()
     {
         $sql = 'select id_producto,id_comentario,id_detalle,CONCAT(nombre_cliente," ",apellido_cliente) as cliente,
@@ -130,7 +140,7 @@ class ComentarioHandler
         return Database::getRows($sql, $params);
     }
 
-
+    // Método para leer un comentario por su id.
     public function readOne()
     {
         $sql = 'select id_comentario,id_detalle,CONCAT(nombre_cliente," ",apellido_cliente) as cliente,
@@ -152,6 +162,7 @@ class ComentarioHandler
         return $data;
     }
 
+    // Método para leer el nombre del archivo de imagen asociado a un producto.
     public function readFilename()
     {
         $sql = 'SELECT foto
@@ -161,6 +172,7 @@ class ComentarioHandler
         return Database::getRow($sql, $params);
     }
 
+    // Método para actualizar el estado de un comentario.
     public function updateRow()
     {
         $sql = 'UPDATE comentarios
@@ -170,6 +182,7 @@ class ComentarioHandler
         return Database::executeRow($sql, $params);
     }
 
+    // Método para eliminar un producto.
     public function deleteRow()
     {
         $sql = 'DELETE FROM productos
@@ -178,6 +191,7 @@ class ComentarioHandler
         return Database::executeRow($sql, $params);
     }
 
+    // Método para leer los productos de una categoría especificada.
     public function readProductosCategoria()
     {
         $sql = 'SELECT mo.id_producto, mo.descripcion,mo.foto, mo.estado,ma.descripcion as marca
@@ -197,6 +211,8 @@ class ComentarioHandler
     /*
     *   Métodos para generar gráficos.
     */
+
+    // Método para obtener la cantidad de productos por categoría.
     public function cantidadProductosCategoria()
     {
         $sql = 'SELECT nombre_categoria, COUNT(id_producto) cantidad
@@ -206,6 +222,7 @@ class ComentarioHandler
         return Database::getRows($sql);
     }
 
+    // Método para obtener el porcentaje de productos por categoría.
     public function porcentajeProductosCategoria()
     {
         $sql = 'SELECT nombre_categoria, ROUND((COUNT(id_producto) * 100.0 / (SELECT COUNT(id_producto) FROM producto)), 2) porcentaje

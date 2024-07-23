@@ -25,8 +25,10 @@ class DetallePedidoHandler
     const RUTA_IMAGEN = '../../images/productos/';
 
     /*
-    *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
+    *   Métodos para realizar las operaciones SCRUD (search, create, read, update and delete).
     */
+
+    // Método para buscar detalles de pedidos según un criterio de búsqueda.
     public function searchRows()
     {
         $this->search = $this->search === '' ? '%%' : '%' . $this->search . '%';
@@ -43,9 +45,11 @@ class DetallePedidoHandler
         OR nombre_marca like ? OR precio_producto_talla like ?)
         ORDER BY descripcion_producto';
 
-        $params = array($this->idPedido,$this->search,$this->search,$this->search);
+        $params = array($this->idPedido, $this->search, $this->search, $this->search);
         return Database::getRows($sql, $params);
     }
+
+    // Método para buscar el historial de detalles de pedidos de un cliente.
     public function searchHistorial()
     {
         $this->search = $this->search === '' ? '%%' : '%' . $this->search . '%';
@@ -60,10 +64,11 @@ class DetallePedidoHandler
         OR nombre_marca like ?)
         ORDER BY descripcion_producto';
 
-        $params = array($_SESSION['idCliente'],$this->search,$this->search);
+        $params = array($_SESSION['idCliente'], $this->search, $this->search);
         return Database::getRows($sql, $params);
     }
 
+    // Método para crear un nuevo registro de producto.
     public function createRow()
     {
         $sql = 'INSERT INTO prc_producto_tallas(id_talla, id_producto, stock_producto_talla, precio_producto_talla)
@@ -72,6 +77,7 @@ class DetallePedidoHandler
         return Database::executeRow($sql, $params);
     }
 
+    // Método para leer todos los registros de producto relacionados con un pedido específico.
     public function readAll()
     {
         $sql = 'select mt.id_producto_talla,mt.id_talla,mt.id_producto,mt.stock_producto_talla,
@@ -83,13 +89,14 @@ class DetallePedidoHandler
         ORDER BY t.descripcion_talla';
         //echo $this->idproducto. ' que';
         $params = array($this->idPedido);
-        
+
         return Database::getRows($sql, $params);
     }
 
+    // Método para leer un registro específico de producto por su id_producto_talla.
     public function readOne()
     {
-        $sql ='select mt.id_producto_talla,mt.id_talla,mt.id_producto,mt.stock_producto_talla,
+        $sql = 'select mt.id_producto_talla,mt.id_talla,mt.id_producto,mt.stock_producto_talla,
         mt.precio_producto_talla,t.descripcion_talla as talla
         from prc_producto_tallas mt 
         INNER JOIN ctg_tallas t USING(id_talla)
@@ -100,6 +107,7 @@ class DetallePedidoHandler
         return Database::getRow($sql, $params);
     }
 
+    // Método para leer el nombre de la imagen de un producto específico.
     public function readFilename()
     {
         $sql = 'SELECT foto
@@ -109,15 +117,17 @@ class DetallePedidoHandler
         return Database::getRow($sql, $params);
     }
 
+    // Método para actualizar la información de un producto en la tabla prc_producto.
     public function updateRow()
     {
         $sql = 'UPDATE prc_producto 
                 SET foto = ?, descripcion = ?,estado = ?, id_marca = ?
                 WHERE id_producto = ?';
-        $params = array($this->imagen, $this->nombre,$this->estado, $this->categoria, $this->id);
+        $params = array($this->imagen, $this->nombre, $this->estado, $this->categoria, $this->id);
         return Database::executeRow($sql, $params);
     }
 
+    // Método para eliminar un producto de la tabla prc_productos.
     public function deleteRow()
     {
         $sql = 'DELETE FROM prc_productos
@@ -126,6 +136,7 @@ class DetallePedidoHandler
         return Database::executeRow($sql, $params);
     }
 
+    // Método para leer todos los productos de una categoría específica.
     public function readProductosCategoria()
     {
         $sql = 'SELECT mo.id_producto, mo.descripcion,mo.foto, mo.estado,ma.descripcion as marca
@@ -133,7 +144,7 @@ class DetallePedidoHandler
         INNER JOIN ctg_marcas ma USING(id_marca)
         WHERE mo.id_marca LIKE ? OR estado="A"
         ORDER BY mo.descripcion';
-        /*'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, existencias_producto
+            /*'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, existencias_producto
                 FROM producto
                 INNER JOIN categoria USING(id_categoria)
                 WHERE id_categoria = ? AND estado_producto = true
