@@ -15,7 +15,6 @@ $cliente = new ClienteData;
 if ($dataClientes = $cliente->readAll()) {
     // Se inicia el reporte con el encabezado del documento.
     $pdf->startReport('Listado de Clientes');
-
     // Establecer color de fondo del encabezado a #081F49
     $pdf->setFillColor(8, 31, 73);
     // Establecer color de los bordes de la tabla a blanco

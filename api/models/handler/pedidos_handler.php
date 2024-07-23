@@ -313,17 +313,18 @@
 
         public function readFactura()
         {
-            $sql = 'SELECT id_detalle,
-                nombre_producto, nombre_marca, nombre_categoria,
-                cantidad_producto, DATE_FORMAT(fecha_registro, "%h:%i %p - %e %b %Y") AS fecha,
-                CONCAT(nombre_cliente," ",apellido_cliente), precio_producto
-                FROM detalle_pedidos
-                INNER JOIN productos USING(id_producto)
-                INNER JOIN pedidos USING(id_pedido)
-                INNER JOIN marcas USING(id_marca)
-                INNER JOIN categorias USING(id_categoria)
-                INNER JOIN clientes USING(id_cliente)
-                WHERE id_pedido = ?';
+            $sql = 'SELECT dp.id_detalle,
+                p.nombre_producto, m.nombre_marca, c.nombre_categoria,
+                dp.cantidad_producto, DATE_FORMAT(pe.fecha_registro, "%h:%i %p - %e %b %Y") AS fecha,
+                CONCAT(cl.nombre_cliente, " ", cl.apellido_cliente) AS nombre_completo,
+                p.precio_producto
+                FROM detalle_pedidos dp
+                INNER JOIN productos p ON dp.id_producto = p.id_producto
+                INNER JOIN pedidos pe ON dp.id_pedido = pe.id_pedido
+                INNER JOIN marcas m ON p.id_marca = m.id_marca
+                INNER JOIN categorias c ON p.id_categoria = c.id_categoria
+                INNER JOIN clientes cl ON pe.id_cliente = cl.id_cliente
+                WHERE dp.id_pedido = ?';
             $params = array($this->id);
             return Database::getRows($sql, $params);
         }
