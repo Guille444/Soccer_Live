@@ -54,7 +54,7 @@ h4 {
 }
 
 .dashboard-item {
-    background-color: white; /* Fondo blanco de cada gráfica */
+    background-color: rgb(198, 220, 241); /* Fondo blanco de cada gráfica */
     border-radius: 8px;
     padding: 20px;
     color: black; /* Asegurar que el texto sea blanco */
