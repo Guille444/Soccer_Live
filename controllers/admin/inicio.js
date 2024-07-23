@@ -169,8 +169,6 @@ const graficaGanancias = async () => {
         console.log(DATA.error);
     }
 }
-
-
 /*
 *   Función asíncrona para mostrar un gráfico de pastel con el porcentaje de productos por categoría.
 *   Parámetros: ninguno.
@@ -182,7 +180,7 @@ const graficoFecha = async () => {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
     if (DATA.status) {
         // Se declaran los arreglos para guardar los datos a gráficar.
-        let pedidos = [];X
+        let pedidos = [];
         let porcentajes = [];
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         DATA.dataset.forEach(row => {
