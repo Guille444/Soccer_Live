@@ -38,7 +38,7 @@ if (isset($_GET['idPedido']) && $pedido->setId($_GET['idPedido'])) {
             $pdf->setFont('Arial', 'B', 11);
             $pdf->cell(78.24, 10, 'Producto', 1, 0, 'C', 1);
             $pdf->cell(39.12, 10, 'Marca', 1, 0, 'C', 1);
-            $pdf->cell(29.34, 10, 'Categoría', 1, 0, 'C', 1);
+            $pdf->cell(29.34, 10, utf8_decode('Categoría'), 1, 0, 'C', 1);
             $pdf->cell(39.12, 10, 'Cantidad', 1, 1, 'C', 1);
 
             // Restablecer el color del texto a negro para los datos

@@ -88,7 +88,7 @@ class Report extends FPDF
             $solicitud = '';
         }
         $this->setFont('Arial', 'I', 10);
-        $this->cell(0, 10, 'Solicitado por ' . $solicitud, 0, 1, 'C');
+        $this->cell(0, 10, 'Requerido por ' . $solicitud, 0, 1, 'C');
         // Se agrega un salto de línea para mostrar el contenido principal del documento.
         $this->ln(7);
     }
