@@ -1,12 +1,12 @@
 <?php
 // Se incluye la clase con las plantillas para generar reportes.
-require_once('../../helpers/report.php');
+require_once ('../../helpers/report.php');
 
 // Se instancia la clase para crear el reporte.
 $pdf = new Report;
 
 // Se incluyen las clases para la transferencia y acceso a datos.
-require_once('../../models/data/pedidos_data.php');
+require_once ('../../models/data/pedidos_data.php');
 
 // Se instancia la entidad correspondiente.
 $pedido = new PedidoData;
@@ -45,6 +45,8 @@ if (isset($_GET['idPedido']) && $pedido->setId($_GET['idPedido'])) {
             $pdf->SetTextColor(0, 0, 0);
             // Se establece la fuente para los datos de los productos.
             $pdf->setFont('Arial', '', 11);
+            // Establecer color de fondo gris claro para las filas de datos
+            $pdf->setFillColor(224, 224, 224);
             // Alternar el color de fondo entre gris claro y blanco para las filas de datos
             $fill = false;
             $total = 0;
@@ -78,9 +80,9 @@ if (isset($_GET['idPedido']) && $pedido->setId($_GET['idPedido'])) {
         // Se llama implícitamente al método footer() y se envía el documento al navegador web.
         $pdf->output('I', 'factura.pdf');
     } else {
-        print('Pedido inexistente');
+        print ('Pedido inexistente');
     }
 } else {
-    print('Pedido incorrecto');
+    print ('Pedido incorrecto');
 }
 ?>

@@ -29,7 +29,6 @@ if ($dataClientes = $cliente->readAll()) {
     $pdf->cell(30, 10, utf8_decode('Teléfono'), 1, 0, 'C', 1);
     $pdf->cell(60, 10, utf8_decode('Correo Electrónico'), 1, 0, 'C', 1);
     $pdf->cell(20, 10, utf8_decode('Estado'), 1, 1, 'C', 1);
-    
     // Restablecer el color del texto a negro para los datos
     $pdf->SetTextColor(0, 0, 0);
     // Se establece la fuente para los datos de los clientes.

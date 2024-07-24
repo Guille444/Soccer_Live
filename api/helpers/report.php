@@ -1,11 +1,11 @@
 <?php
 // Se incluye la clase para generar archivos PDF.
-require_once('../../libraries/fpdf185/fpdf.php');
+require_once ('../../libraries/fpdf185/fpdf.php');
 
 /*
-*   Clase para definir las plantillas de los reportes del sitio privado.
-*   Para más información http://www.fpdf.org/
-*/
+ *   Clase para definir las plantillas de los reportes del sitio privado.
+ *   Para más información http://www.fpdf.org/
+ */
 class Report extends FPDF
 {
     // Constante para definir la ruta de las vistas del sitio privado.
@@ -14,10 +14,10 @@ class Report extends FPDF
     private $title = null;
 
     /*
-    *   Método para iniciar el reporte con el encabezado del documento.
-    *   Parámetros: $title (título del reporte).
-    *   Retorno: ninguno.
-    */
+     *   Método para iniciar el reporte con el encabezado del documento.
+     *   Parámetros: $title (título del reporte).
+     *   Retorno: ninguno.
+     */
     public function startReport($title)
     {
         // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en los reportes.
@@ -40,10 +40,10 @@ class Report extends FPDF
     }
 
     /*
-    *   Método para codificar una cadena de alfabeto español a UTF-8.
-    *   Parámetros: $string (cadena).
-    *   Retorno: cadena convertida.
-    */
+     *   Método para codificar una cadena de alfabeto español a UTF-8.
+     *   Parámetros: $string (cadena).
+     *   Retorno: cadena convertida.
+     */
     public function encodeString($string)
     {
         return mb_convert_encoding($string, 'ISO-8859-1', 'utf-8');
@@ -57,9 +57,9 @@ class Report extends FPDF
     }
 
     /*
-    *   Se sobrescribe el método de la librería para establecer la plantilla del encabezado de los reportes.
-    *   Se llama automáticamente en el método addPage()
-    */
+     *   Se sobrescribe el método de la librería para establecer la plantilla del encabezado de los reportes.
+     *   Se llama automáticamente en el método addPage()
+     */
     public function header()
     {
         // Add the background image
@@ -82,21 +82,22 @@ class Report extends FPDF
         if (isset($_SESSION['idEmpleado'])) {
             // Si la variable de sesión está establecida, asigna su valor a $solicitud
             $solicitud = $_SESSION['usuarioEmpleado'];
+            $this->setFont('Arial', 'I', 10);
+            $this->cell(0, 10, 'Requerido por ' . $solicitud, 0, 1, 'C');
         } elseif (isset($_SESSION['idCliente'])) {
             $solicitud = $_SESSION['usuarioCliente'];
         } else {
             $solicitud = '';
         }
-        $this->setFont('Arial', 'I', 10);
-        $this->cell(0, 10, 'Requerido por ' . $solicitud, 0, 1, 'C');
+
         // Se agrega un salto de línea para mostrar el contenido principal del documento.
         $this->ln(7);
     }
 
     /*
-    *   Se sobrescribe el método de la librería para establecer la plantilla del pie de los reportes.
-    *   Se llama automáticamente en el método output()
-    */
+     *   Se sobrescribe el método de la librería para establecer la plantilla del pie de los reportes.
+     *   Se llama automáticamente en el método output()
+     */
     public function footer()
     {
         // Se establece la posición para el número de página (a 15 milímetros del final).

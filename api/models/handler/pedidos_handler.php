@@ -354,10 +354,10 @@ class PedidoHandler
 
     public function PorcentajeFechaPedidos()
     {
-        $sql = 'SELECT fecha_registro, ROUND((COUNT(id_detalle) * 100.0 / (SELECT COUNT(id_detalle) FROM detalle_pedidos)), 2) porcentaje
+        $sql = 'SELECT fecha_registro, COUNT(id_pedido) porcentaje
             FROM detalle_pedidos
             INNER JOIN pedidos USING(id_pedido)
-            GROUP BY fecha_registro ORDER BY porcentaje DESC';
+            GROUP BY fecha_registro ORDER BY porcentaje DESC LIMIT 5';
         return Database::getRows($sql);
     }
 }
